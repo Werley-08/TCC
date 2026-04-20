@@ -1,0 +1,52 @@
+# Arquivos auxiliares do LaTeX
+
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Arquivos de compilação intermediários
+
+*.log
+*.run.xml
+
+# Glossários
+
+*.glsdefs
+
+# Bibliografia (dependendo do fluxo)
+
+*.nav
+*.snm
+
+# Arquivos temporários do editor
+
+*.swp
+*.swo
+*~
+
+# VS Code
+
+.vscode/
+
+# Sistema operacional
+
+.DS_Store
+Thumbs.db
