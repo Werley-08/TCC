@@ -1,35 +1,68 @@
 \chapter{Introdução}
 \label{cap:introducao}
 
-%Para começar a usar este \textit{template}, na plataforma \textit{ShareLatex}, vá nas opções (três barras vermelhas horizontais) no canto esquerdo superior da tela e clique em "Copiar Projeto" e dê um novo nome para o projeto. 
+A Engenharia de Software tem como objetivo o desenvolvimento de sistemas que atendam não apenas aos requisitos funcionais, 
+mas também a atributos de qualidade que garantam sua sustentabilidade ao longo do tempo. Entre esses atributos, a manutenibilidade 
+destaca-se como um dos mais relevantes, uma vez que grande parte dos custos de um sistema está associada à sua evolução e manutenção 
+ao longo do ciclo de vida \cite{pressman2010}. Nesse contexto, a modularidade é amplamente reconhecida como um fator fundamental 
+para a melhoria da qualidade estrutural de sistemas de software, pois permite a decomposição do sistema em módulos menores e independentes, 
+possibilitando que eles sejam modificados de forma isolada e sem que seja preciso conhecer profundamente a implementação de
+outros módulos \cite{parnas1972}.
 
-Para começar a utilizar este \textit{template}, siga o tutorial clicando no seguinte \textit{link}:
-\url{http://www.biblioteca.ufc.br/images/arquivos/instrucoes_modelos/tutorial_sharelatex.pdf}
+A modularidade está diretamente relacionada a conceitos como coesão e acoplamento. Sistemas com alta coesão e baixo acoplamento 
+tendem a apresentar melhor organização estrutural, facilitando sua compreensão, teste e modificação \cite{yourdon1978}. 
+Em sistemas orientados a objetos, essas características são fortemente influenciadas pelas decisões arquiteturais adotadas, 
+uma vez que a arquitetura define a organização dos componentes e as relações de dependência entre eles \cite{bass2012,sommerville2011}. 
+Dessa forma, a escolha de um estilo arquitetural exerce impacto direto na qualidade estrutural do software.
 
+Dentre os estilos arquiteturais amplamente utilizados, destacam-se a arquitetura em camadas e a arquitetura hexagonal. A arquitetura 
+em camadas organiza o sistema em níveis hierárquicos, nos quais cada camada possui responsabilidades específicas, promovendo separação 
+de responsabilidades \cite{fowler2003}. Por outro lado, a arquitetura hexagonal, também conhecida como Ports and Adapters, 
+propõe o isolamento do núcleo da aplicação em relação às dependências externas, favorecendo maior independência tecnológica e 
+testabilidade \cite{cockburn2005}. Embora ambos os estilos sejam amplamente discutidos na literatura e utilizados na prática, 
+seus impactos na modularidade nem sempre são avaliados de forma quantitativa.
 
-For further references see \href{http://www.sharelatex.com}{Something Linky} or go to the next url: \url{http://www.sharelatex.com} or open the next file \href{run:./file.txt}{File.txt}
+Nesse cenário, métricas de software surgem como instrumentos fundamentais para a avaliação objetiva da qualidade estrutural.
+Métricas como coesão e acoplamento permitem quantificar propriedades internas do código, fornecendo base para análise de diferentes 
+soluções \cite{fenton2015}. Em particular, métricas estruturais para sistemas orientados a objetos, como as propostas por 
+\citeonline{chidamber1994}, são amplamente utilizadas para avaliar atributos internos do software, tais como acoplamento, 
+coesão e complexidade, os quais influenciam diretamente a modularidade e a organização estrutural dos componentes.
 
-Neste \textit{template}, o autor irá encontrar diversas instruções e exemplos dos recursos do uso do \LaTeX~na plataforma \textit{Overleaf}. O \LaTeX~foi desenvolvido, inicialmente, na década de 80, por Leslie Lamport e é utilizado amplamente na produção de textos matemáticos e científicos, devido a sua alta qualidade tipográfica \cite{goossens1994latex}. 
+Apesar da existência de diversos estudos que aplicam métricas de software para análise de sistemas, ainda há limitações na literatura 
+no que diz respeito à comparação empírica entre diferentes estilos arquiteturais. Alguns trabalhos concentram-se em arquiteturas 
+específicas, analisando seus impactos na modularidade em cenários controlados. Outros estudos realizam comparações entre estilos 
+arquiteturais distintos, porém frequentemente baseados em revisões teóricas, sem a utilização de dados extraídos de sistemas reais.
 
-O \textit{Overleaf} é uma plataforma \textit{online} que pode ser acessado por meio de qualquer navegador de internet até mesmo de um \textit{smartphone}. Essa plataforma dispensa a instalação de aplicativos no computador para desenvolver trabalhos em \LaTeX. Também, não é necessário instalar \textit{packages}, ou seja, pacotes que permitem diferentes efeitos na formatação e no visual do trabalho. Todos os \textit{packages} que este \textit{template} utiliza são encontrados \textit{online}. 
+Diante desse contexto, observa-se uma lacuna na realização de estudos experimentais que investiguem, de forma quantitativa, 
+o impacto de diferentes estilos arquiteturais na modularidade de sistemas orientados a objetos, utilizando aplicações reais como 
+objeto de análise. Assim, este trabalho propõe avaliar a modularidade de sistemas orientados a objetos por meio da aplicação de 
+métricas estruturais, realizando um estudo comparativo entre arquitetura em camadas e arquitetura hexagonal. A análise será conduzida 
+a partir de dois sistemas desenvolvidos previamente, permitindo a obtenção de evidências empíricas sobre os efeitos das decisões 
+arquiteturais na qualidade estrutural do software.
 
-Apresentam-se, também, neste modelo, algumas orientações de como desenvolver um trabalho acadêmico. Entretanto, este arquivo deve ser editado pelo autor de acordo com o seu trabalho sendo que a formatação já está de acordo com o aceito pela Universidade Federal do Ceará.  
+Este trabalho está organizado da seguinte forma: 
+o Capítulo 2 apresenta a fundamentação teórica, abordando conceitos de modularidade, arquitetura de software e métricas estruturais; 
+o Capítulo 3, discorre sobre alguns trabalhos relacionados; 
+o Capítulo 4 descreve a metodologia adotada; 
+o Capítulo 5 apresenta os objetos de estudo; 
+o Capítulo 6 discute os resultados obtidos; 
+e, por fim, o Capítulo 7 apresenta as conclusões.
 
-A introdução, tem como finalidade, dar ao leitor uma visão concisa do tema investigado, ressaltando-se o assunto de forma delimitada, ou seja, enquadrando-o sob a perspectiva de uma área do conhecimento, de forma que fique evidente sobre o que se está investigando; a justificativa da escolha do tema; os objetivos do trabalho; o objeto de pesquisa que será investigado. Observe que não se divide a introdução em seções, mas a mesma informa como o trabalho ao todo está organizado.
+\section{Objetivos}
+\label{sec:objetivos}
 
-SAJSHJKAHSKJAHKJAHKJSHAJS
+\subsection{Objetivo Geral}
+\label{sec:objetivo-geral}
 
-%Testando o símbolo $\symE$
+Avaliar a modularidade de sistemas orientados a objetos por meio da aplicação de métricas estruturais em diferentes estilos arquiteturais.
 
-%\lipsum[5]  % Simulador de texto, ou seja, é um gerador de lero-lero.
+\subsection{Objetivos Específicos}
+\label{sec:objetivos-especificos}
 
-%	\begin{alineas}
-%		\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dictum sed tortor nec viverra.
-%		\item Praesent vitae nulla varius, pulvinar quam at, dapibus nisi. Aenean in commodo tellus. Mauris molestie est sed justo malesuada, quis feugiat tellus venenatis.
-%		\item Praesent quis erat eleifend, lacinia turpis in, tristique tellus. Nunc dictum sed tortor nec viverra.
-%		\item Mauris facilisis odio eu ornare tempor. Nunc dictum sed tortor nec viverra.
-%		\item Curabitur convallis odio at eros consequat pretium.
-%	\end{alineas}
-	
-
-	
+\begin{itemize}
+    \item Avaliar a modularidade dos sistemas analisados com base nas métricas estruturais selecionadas;
+    
+    \item Comparar a modularidade entre os diferentes estilos arquiteturais analisados;
+    
+    \item Analisar a relação entre decisões arquiteturais e qualidade estrutural do software.
+\end{itemize}
