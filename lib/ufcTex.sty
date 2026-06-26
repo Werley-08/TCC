@@ -1309,13 +1309,13 @@
 \newcommand{\apendice}[1]{\chapter{\hspace{-8pt}\uppercase{#1}}}
 
 % O nome "APÊNDICES" nao deve vir em pagina distinta, redigido em letras maiusculas, centralizado, negritado, tamanho da fonte 12.
-%\newcommand{\imprimirpaginaapendices}{ %
-%	\newpage %
-%	\addcontentsline{toc}{chapter}{AP\^ENDICES} %
-	%\begin{vplace}[0.7] %
-	%	\centering\textbf{AP\^ENDICESteste2} %
-	%\end{vplace} %
-	%\clearpage}
+% \newcommand{\imprimirpaginaapendices}{ %
+% 	\newpage %
+% 	\addcontentsline{toc}{chapter}{AP\^ENDICES} %
+% 	\begin{vplace}[0.7] %
+% 		\centering\textbf{AP\^ENDICESteste2} %
+% 	\end{vplace} %
+% 	\clearpage}
 
 % Altera a fonte da letra titulo do apendice nao negrito
 \renewcommand{\chaptitlefont}{ %
@@ -1343,7 +1343,7 @@
 %}
 
 \newcommand{\imprimirapendices}{ 
-	\imprimirpaginaapendices
+	% \imprimirpaginaapendices
 	\apendices %
 	% Coloca o negrito da palavra "Apêndice"
 	\PRIVATEapendiceconfig{\bfseries\apendicename}{\bfseries\apendicesname} %

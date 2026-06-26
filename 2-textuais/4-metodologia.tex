@@ -1,60 +1,265 @@
 \chapter{Metodologia}
 \label{cap:metodologia}
 
+Este capítulo apresenta os procedimentos metodológicos adotados para a condução da pesquisa. Inicialmente, são descritas 
+a classificação e a estratégia da investigação. Em seguida, são apresentados os objetos de estudo, as métricas utilizadas 
+para avaliação da modularidade, os procedimentos de coleta dos dados e as etapas do experimento proposto.
+
 \section{Classificação da Pesquisa}
 \label{sec:classificacao-da-pesquisa}
 
-natureza → aplicada
-abordagem → quantitativa
-objetivo → exploratória / descritiva
-método → experimental
+Segundo \citeonline{gil2008}, as pesquisas podem ser classificadas quanto à natureza, aos objetivos, à abordagem do problema e
+aos procedimentos técnicos. Sob essa perspectiva, este trabalho caracteriza-se como uma pesquisa aplicada, descritiva, de 
+abordagem quantitativa e conduzida por meio de um estudo experimental.
+
+A pesquisa é classificada como aplicada por buscar produzir conhecimento com potencial de utilização prática na avaliação da 
+modularidade e da qualidade estrutural de sistemas de software. Além disso, possui caráter descritivo, uma vez que busca 
+identificar, mensurar e comparar características estruturais observadas em sistemas desenvolvidos segundo diferentes estilos 
+arquiteturais.
+
+A abordagem adotada é quantitativa, fundamentando-se na coleta e análise de dados numéricos obtidos por meio de métricas 
+estruturais extraídas do código-fonte dos sistemas analisados. Por fim, o trabalho configura-se como um estudo experimental,
+pois compara métricas obtidas a partir de dois sistemas implementados segundo arquiteturas distintas, buscando identificar 
+diferenças relacionadas à modularidade estrutural.
 
 \section{Estratégia de Pesquisa}
 \label{sec:estrategia-de-pesquisa}
 
-estudo comparativo
-análise entre duas arquiteturas
-uso de sistemas reais
-unidade de análise (classes, pacotes, etc.)
+A estratégia adotada nesta pesquisa consiste na extração e análise de métricas estruturais obtidas a partir de dois
+sistemas desenvolvidos segundo estilos arquiteturais distintos. Os valores observados serão comparados com o objetivo de
+identificar diferenças relacionadas ao acoplamento, à coesão e à complexidade estrutural das classes.
 
-\section{Definição das Métricas}
-\label{sec:definicao-das-metricas}
+Conforme argumentam \citeonline{fenton2015}, métricas de software permitem transformar propriedades abstratas do projeto em 
+indicadores quantitativos, possibilitando análises mais objetivas sobre qualidade interna e manutenibilidade. Dessa forma, 
+a utilização de métricas estruturais permite investigar empiricamente características normalmente avaliadas de maneira subjetiva.
 
-quais métricas vai usar (CBO, LCOM, etc.)
-o que cada uma mede
-por que são relevantes
+A unidade de análise desta pesquisa corresponde às classes implementadas em cada sistema. A escolha desse nível de granularidade 
+justifica-se pelo fato de que as métricas selecionadas foram originalmente concebidas para avaliação de sistemas orientados a 
+objetos \cite{chidamber1994}. Além disso, trabalhos relacionados analisados neste estudo demonstram a utilização de métricas estruturais 
+como instrumento para avaliação de modularidade e qualidade arquitetural, seja por meio de métricas orientadas a objetos \cite{ferreira2006} 
+ou de abordagens quantitativas aplicadas à comparação entre estilos arquiteturais \cite{lazzari2022, tsuruta2010}. 
+Dessa forma, a análise em nível de classe é consistente com a literatura e adequada aos objetivos desta pesquisa.
 
-\section{Ferramentas Utilizadas}
-\label{sec:ferramentas-utilizadas}
+\section{Objetos de Estudo}
+\label{sec:objetos-de-estudo}
 
-ferramentas de extração (ex: CK, SonarQube)
-ambiente (Java, etc.)
-como elas são usadas (sem entrar em passo a passo)
+Esta pesquisa utiliza como objetos de estudo dois sistemas desenvolvidos em contexto acadêmico durante disciplinas do curso de 
+Engenharia de Software. Os sistemas foram implementados por equipes de estudantes, com participação do autor desta pesquisa, 
+e foram selecionados por adotarem estilos arquiteturais distintos, possibilitando a investigação dos impactos dessas arquiteturas 
+sobre atributos relacionados à modularidade de software.
+
+O primeiro sistema analisado é o \textit{SISO}, desenvolvido na disciplina de Projeto Integrado II. Trata-se de uma aplicação web 
+voltada ao gerenciamento de clínicas odontológicas, oferecendo funcionalidades relacionadas ao controle de usuários, cadastro de pacientes,
+prontuário eletrônico, anamnese, gerenciamento de tratamentos e agendamentos. O sistema foi concebido utilizando uma arquitetura em camadas,
+modelo no qual as responsabilidades da aplicação são distribuídas em níveis específicos, favorecendo a separação de interesses e a 
+organização estrutural do software \cite{fowler2003}.
+
+O segundo sistema analisado é o \textit{Roomie}, desenvolvido na disciplina de Projeto Integrado III. O sistema consiste em uma aplicação
+móvel destinada a conectar pessoas que possuem vagas disponíveis em residências com indivíduos que buscam compartilhar moradia. Entre suas
+funcionalidades estão a publicação de anúncios, mecanismos de filtragem, sistema de compatibilidade entre usuários, troca de mensagens por 
+chat e envio de notificações. Diferentemente do SISO, o Roomie foi estruturado segundo a arquitetura hexagonal, também conhecida como 
+\textit{Ports and Adapters}. De acordo com \citeonline{cockburn2005}, esse estilo arquitetural busca isolar as regras de negócio dos 
+detalhes tecnológicos por meio de interfaces bem definidas, reduzindo o acoplamento entre domínio e infraestrutura.
+
+Embora os sistemas pertençam a domínios de negócio distintos, ambos foram desenvolvidos utilizando Java e o framework Spring Boot em suas 
+camadas de back-end, adotando princípios de orientação a objetos e práticas semelhantes de desenvolvimento. Dessa forma, a comparação proposta
+concentra-se na organização estrutural promovida pelos estilos arquiteturais adotados, e não nas funcionalidades implementadas ou no
+desempenho das aplicações.
+
+\begin{table}[htb]
+\centering
+\caption{Caracterização dos sistemas analisados}
+\label{tab:caracterizacao-sistemas}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Característica} & \textbf{SISO} & \textbf{Roomie} \\ \hline
+Arquitetura & Em Camadas & Hexagonal \\ \hline
+Classes & 89 & 88 \\ \hline
+Interfaces & 47 & 38 \\ \hline
+Enums & 6 & 18 \\ \hline
+\end{tabular}
+
+\vspace{0.1cm}
+\par
+\centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
+\end{table}
+
+Observa-se que os sistemas apresentam quantidades semelhantes de classes, indicando porte estrutural comparável sob essa perspectiva. 
+Essa característica contribui para a realização de uma análise comparativa focada nos efeitos dos estilos arquiteturais sobre métricas 
+relacionadas à modularidade, reduzindo a influência de diferenças significativas de escala entre os projetos.
+
+Os repositórios contendo os sistemas analisados encontram-se disponíveis para consulta e reprodução dos experimentos realizados neste trabalho, 
+conforme apresentado no Apêndice A.
+
+\section{Coleta dos Dados}
+\label{sec:coleta-dos-dados}
+
+A coleta dos dados será realizada por meio de análise estática do código-fonte dos sistemas estudados. Nessa abordagem, 
+as métricas são obtidas diretamente a partir da estrutura do software, sem a necessidade de execução da aplicação. 
+Essa estratégia é compatível com o objetivo da pesquisa, que consiste em avaliar atributos internos relacionados à modularidade 
+por meio de métricas estruturais \cite{fenton2015}.
+
+Para extração das métricas será utilizada a ferramenta CK, desenvolvida por Mauricio Aniche. A ferramenta realiza a análise estática de 
+projetos Java e gera relatórios contendo métricas estruturais em nível de classe e método \cite{aniche-ck}. O link para acesso a ferramenta CK 
+encontra-se disponível no Apêdice A.
+
+Nesta pesquisa serão utilizados exclusivamente os dados extraídos em nível de classe, uma vez que o foco do estudo está na organização
+estrutural dos sistemas e não na complexidade individual de métodos específicos.
+
+\section{Métricas de Avaliação}
+\label{sec:metricas-de-avaliacao}
+
+As métricas utilizadas neste estudo seguem as definições clássicas propostas por Chidamber e Kemerer \cite{chidamber1994}, enquanto a operacionalização
+dos cálculos segue a implementação fornecida pela ferramenta CK \cite{aniche-ck}.
+
+As métricas selecionadas foram escolhidas por sua relação direta com atributos associados à modularidade, especialmente acoplamento, 
+coesão e complexidade estrutural, sendo descritas na Tabela \ref{tab:metricas}.
+ 
+Embora o conjunto original de 1994 seja composto por seis métricas, este trabalho utiliza apenas quatro delas, excluindo propositalmente DIT e NOC. Essa decisão 
+justifica-se pelo fato de DIT e NOC avaliarem predominantemente a genealogia e a hierarquia de herança das classes. Como o foco central deste TCC é a modularidade
+estrutural e o acoplamento entre camadas e portas, métricas ligadas à herança não trariam conclusões relevantes para a comparação dos estilos arquiteturais analisados. 
+
+Para complementar a análise, foram incorporadas as métricas Fan-In e Fan-Out. Apesar de não integrarem a suíte original de 1994, elas foram selecionadas por 
+fornecerem uma visão granular das dependências de entrada e saída, o que é relevante para avaliar a comunicação entre os componentes de cada sistema.
+
+\begin{table}[htb]
+\centering
+\caption{Métricas utilizadas na avaliação da modularidade}
+\label{tab:metricas}
+\begin{tabular}{|p{2cm}|p{10cm}|}
+\hline
+\textbf{Métrica} & \textbf{Descrição} \\ \hline
+
+CBO &
+Mede o número de dependências de uma classe com outras classes do sistema. Na ferramenta CK, considera qualquer tipo referenciado na classe 
+(atributos, parâmetros, retornos e variáveis locais), exceto tipos da biblioteca padrão Java \cite{aniche-ck}. \\ \hline
+
+LCOM* &
+Mede a falta de coesão entre métodos de uma classe. É uma métrica normalizada no intervalo de 0 a 1, em que valores próximos de 0 indicam maior coesão
+e valores próximos de 1 indicam menor coesão. A ferramenta CK disponibiliza a métrica LCOM* em sua forma normalizada. \cite{aniche-ck}. \\ \hline
+
+RFC &
+Conta o número de métodos que podem ser potencialmente executados em resposta a uma mensagem recebida pela classe, incluindo métodos próprios e invocações 
+a outros métodos. Na ferramenta CK, é obtido por análise estática de invocações únicas de métodos \cite{aniche-ck}. \\ \hline
+
+WMC &
+Mede a complexidade de uma classe. Na ferramenta CK, é calculado como o número de instruções de ramificação presentes nos métodos da classe \cite{aniche-ck}. \\ \hline
+
+Fan-In &
+Quantifica o número de dependências de entrada de uma classe, correspondendo à quantidade de classes que a referenciam por meio de atributos, acesso a membros
+ou invocação de métodos. Na ferramenta CK, considera todas as referências diretas à classe no código-fonte \cite{aniche-ck}. \\ \hline
+
+Fan-Out &
+Quantifica o número de dependências de saída de uma classe, correspondendo à quantidade de outras classes referenciadas por ela por meio de atributos, 
+instanciação de objetos ou invocação de métodos. Na ferramenta CK, considera todas as referências diretas feitas pela classe no código-fonte \cite{aniche-ck}. \\ \hline
+
+\end{tabular}
+
+\vspace{0.1cm}
+\par
+\centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
+\end{table}
+
+Convém observar que as definições apresentadas na Tabela \ref{tab:metricas} apresentam variações em relação às proposições conceituais 
+originais de \citeonline{chidamber1994}. Tais distinções decorrem da operacionalização prática adotada pela ferramenta CK, que utiliza 
+heurísticas de análise estática específicas para o ecossistema Java. Por exemplo, enquanto o CBO original é definido de forma ampla como
+o acoplamento entre classes, a ferramenta especifica exatamente quais referências (como variáveis locais e retornos) são contabilizadas e
+ignora propositalmente as bibliotecas padrão do Java para garantir maior precisão nos resultados. Da mesma forma, a métrica de coesão 
+utilizada é o LCOM*, uma versão normalizada que difere do cálculo de interseção de conjuntos proposto inicialmente. Para os fins deste 
+estudo, as definições operacionais da ferramenta serão as adotadas, garantindo a consistência entre a extração dos dados e a análise 
+dos resultados.
 
 \section{Procedimento Experimental}
 \label{sec:procedimento-experimental}
 
-Aqui é o “passo a passo”:
+O procedimento experimental será executado em três etapas.
 
-seleção dos sistemas
-execução das ferramentas
-coleta das métricas
-organização dos dados
+Inicialmente, a ferramenta CK será executada individualmente nos sistemas SISO e Roomie para extração das métricas estruturais
+definidas nesta pesquisa. A ferramenta realizará a análise estática do código-fonte e produzirá uma planilha como saída contendo 
+os valores das métricas para cada classe identificada nos projetos.
 
-\section{Tratamento e Análise dos Dados}
-\label{sec:tratamento-e-analise-dos-dados}
+Na segunda etapa, os dados extraídos pela ferramenta CK serão processados por meio de um script desenvolvido em Python. 
+O script será responsável pela seleção das métricas definidas na pesquisa, pelo cálculo das medidas de estatística descritiva
+e geração de visualizações gráficas que auxiliem a interpretação e comparação dos resultados. Serão calculadas, para cada métrica,
+as medidas de média, mediana, desvio padrão, mínimo e máximo.
 
-como vai comparar os sistemas
-médias, distribuições, etc.
-normalização (se necessário)
-critérios de comparação
+A utilização de recursos computacionais para tratamento dos dados busca reduzir erros de processamento manual e garantir a 
+reprodutibilidade das análises realizadas.
 
-\section{Ameaças à Validade}
-\label{sec:ameacas-a-validez}
+Por fim, será realizada a análise comparativa dos resultados, buscando identificar diferenças nos indicadores de acoplamento,
+coesão e complexidade estrutural entre os sistemas analisados. A interpretação dos resultados será conduzida com base nos conceitos
+de modularidade discutidos na fundamentação teórica, permitindo avaliar como os diferentes estilos arquiteturais se refletem nas
+métricas estruturais consideradas neste estudo.
 
-Você discute possíveis limitações:
+A Figura \ref{fig:fluxo-metodologico} apresenta uma visão geral das etapas que compõem o procedimento experimental adotado nesta pesquisa.
 
-diferença de tamanho dos sistemas
-viés dos projetos (foram feitos por você)
-generalização dos resultados
-limitações das métricas
+\begin{figure}[htb]
+    \centering
+    \caption{Fluxo das etapas do procedimento experimental}
+    \includegraphics[width=0.9\textwidth]{figuras/fluxo-metodologico.png}
+    \label{fig:fluxo-metodologico}
+    
+    \vspace{0.1cm}
+    \footnotesize Fonte: Elaborado pelo autor (2026).
+\end{figure}
+
+\section{Cronograma de Execução}
+\label{sec:cronograma-de-execucao}
+
+Essa seção apresenta o cronograma de execução das atividades previstas para a realização do TCC II, conforme descrito na Tabela \ref{tab:cronograma}.
+
+\begin{table}[htb]
+\centering
+\caption{Cronograma de execução do TCC II}
+\label{tab:cronograma}
+
+\begin{tabular}{|p{7cm}|c|c|c|c|c|}
+\hline
+\textbf{Atividade} & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez} \\ \hline
+
+Revisão e ajustes do TCC I & X & & & & \\ \hline
+
+Extração das métricas com a ferramenta CK & & X & & & \\ \hline
+
+Desenvolvimento do script de análise & & X & X & & \\ \hline
+
+Tratamento dos dados e consolidação dos resultados & & & X & & \\ \hline
+
+Análise e interpretação dos resultados & & & X & X & \\ \hline
+
+Redação dos resultados e discussão & & & & X & \\ \hline
+
+Elaboração da conclusão & & & & X & \\ \hline
+
+Revisão geral do trabalho & & & & X & X \\ \hline
+
+Adequação às normas da instituição & & & & & X \\ \hline
+
+Entrega da versão final & & & & & X \\ \hline
+
+\end{tabular}
+
+\vspace{0.1cm}
+\par
+\centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
+
+\end{table}
+
+
+% GUARDAR PRA COLOCAR ISSO SÓ NOS RESULTADOS
+% \section{Ameaças à Validade}
+
+% Conforme discutido por \citeonline{wohlin2012}, estudos experimentais em Engenharia de Software estão sujeitos a diferentes ameaças à 
+% validade, as quais devem ser explicitamente reconhecidas.
+
+% A principal limitação desta pesquisa refere-se à utilização de apenas dois sistemas como objetos de estudo, o que restringe a possibilidade
+% de generalização dos resultados para outros contextos arquiteturais.
+
+% Outra ameaça está relacionada ao fato de ambos os sistemas terem sido desenvolvidos pelo próprio autor, podendo existir influências 
+% decorrentes de decisões de projeto específicas adotadas durante o desenvolvimento.
+
+% Além disso, os sistemas analisados pertencem a domínios distintos. Embora o foco da pesquisa esteja na organização estrutural do software, 
+% diferenças inerentes aos requisitos de cada sistema podem influenciar determinados indicadores estruturais.
+
+% Por fim, as métricas utilizadas representam aproximações quantitativas de atributos de qualidade e não são capazes de capturar integralmente 
+% todos os aspectos relacionados à modularidade de software.

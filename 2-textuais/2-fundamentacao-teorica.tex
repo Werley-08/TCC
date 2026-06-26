@@ -1,42 +1,337 @@
 \chapter{Fundamentação Teórica}
 \label{cap:fundamentacao-teorica}
 
-\section{Modularidade em Sistemas de Software}
-\label{sec:modularidade-em-sistemas-de-software}
-
-Definição
-Importância
-Relação com qualidade
+A fundamentação teórica constitui a base conceitual necessária para compreensão dos temas abordados nesta pesquisa. Nesse contexto, este 
+capítulo apresenta os principais conceitos relacionados à arquitetura de software, modularidade e qualidade estrutural de sistemas orientados
+a objetos. Também são discutidos os estilos arquiteturais analisados neste trabalho, bem como as métricas estruturais utilizadas para avaliar 
+quantitativamente atributos relacionados ao acoplamento, à coesão e à complexidade dos sistemas estudados.
 
 \section{Arquitetura de Software}
 \label{sec:arquitetura-de-software}
 
-Conceito geral
-Papel na Engenharia de Software
+A arquitetura de software está relacionada à forma como um sistema é estruturado e compreendido em um nível mais alto de abstração. 
+Segundo \citeonline{bass2012}, a arquitetura de um sistema corresponde ao conjunto de estruturas necessárias para raciocinar sobre ele, 
+incluindo seus elementos de software, as relações estabelecidas entre esses elementos e as propriedades associadas a ambos.
 
-\section{Arquitetura em Camadas}
+Essa definição evidencia que a arquitetura não é composta por uma única estrutura, mas por diferentes estruturas que permitem analisar 
+o sistema sob perspectivas distintas. De acordo com \citeonline{bass2012}, uma estrutura pode ser compreendida como um conjunto de 
+elementos ligados por algum tipo de relação. Assim, a arquitetura permite observar como os elementos do sistema se organizam e como 
+se relacionam, omitindo detalhes internos que não são relevantes para a compreensão da estrutura geral.
+
+De forma complementar, \citeonline{fowler2003} destaca que o termo arquitetura não possui uma definição única amplamente aceita, 
+mas geralmente envolve dois aspectos recorrentes: a decomposição do sistema em partes de alto nível e as decisões consideradas 
+difíceis de modificar posteriormente. Nesse sentido, a arquitetura representa não apenas a organização estrutural do software, 
+mas também um conjunto de decisões que influenciam a forma como o sistema pode ser compreendido, mantido e evoluído.
+
+Em determinados contextos, os elementos arquiteturais são organizados de maneiras recorrentes para solucionar problemas comuns de projeto. 
+Essas composições, descritas na literatura como padrões arquiteturais, fornecem estratégias reutilizáveis para estruturar 
+sistemas de software \cite{bass2012,fowler2003}. Entre os estilos relevantes para esta pesquisa destacam-se a arquitetura em camadas
+e a arquitetura hexagonal, que serão discutidas nas subseções seguintes.
+
+\subsection{Arquitetura em Camadas}
 \label{sec:arquitetura-em-camadas}
 
-Como funciona
-Vantagens
-Limitações
+A arquitetura em camadas é um padrão arquitetural no qual os elementos do sistema são organizados em níveis de responsabilidade, 
+chamados camadas. Segundo \citeonline{bass2012}, esse padrão emerge quando a relação de uso entre os elementos de software ocorre 
+de forma unidirecional, de modo que uma camada utiliza os serviços fornecidos pelas camadas inferiores.
 
-\section{Arquitetura Hexagonal}
+De acordo com \citeonline{bass2012}, uma camada corresponde a um conjunto coerente de funcionalidades relacionadas. Em uma estrutura 
+estritamente em camadas, cada camada deve utilizar apenas os serviços oferecidos pela camada imediatamente inferior. Essa organização 
+estabelece uma ordem clara de dependência entre as partes do sistema, favorecendo a separação de responsabilidades e a definição de
+interfaces públicas entre os níveis da aplicação.
+
+O padrão em camadas tem como objetivo permitir que diferentes partes do sistema sejam desenvolvidas e evoluídas com menor interação
+direta entre si. Para isso, o software é segmentado em unidades que agrupam módulos responsáveis por oferecer um conjunto coeso
+de serviços. A Figura \ref{fig:arquitetura-camadas} apresenta uma representação simplificada desse padrão, na qual a camada superior pode utilizar
+os serviços da camada imediatamente inferior, mantendo uma relação de dependência orientada de cima para baixo.
+
+\begin{figure}[htb]
+\centering
+\caption{Representação do padrão arquitetural em camadas}
+\includegraphics[width=0.65\textwidth]{figuras/arquitetura-em-camadas.png}
+\label{fig:arquitetura-camadas}
+
+\vspace{0.1cm}
+\footnotesize Fonte: Elaborado pelo autor (2026), com base em \citeonline{bass2012}.
+
+\end{figure}
+
+Na prática, existem variações desse padrão. Embora a estrutura estrita permita apenas o uso da camada imediatamente inferior,
+\citeonline{bass2012} observa que alguns sistemas permitem o acesso a camadas inferiores não adjacentes, situação conhecida
+como \textit{layer bridging}. Entretanto, a ocorrência frequente desse tipo de acesso pode comprometer benefícios associados
+ao padrão, como modificabilidade e portabilidade, pois aumenta o acoplamento entre partes que deveriam permanecer separadas.
+
+Embora a arquitetura em camadas seja definida principalmente pela separação de responsabilidades e pela relação de uso entre 
+camadas, sua implementação pode empregar mecanismos de abstração para reduzir dependências diretas entre seus elementos. 
+Conforme discutido por \citeonline{bass2012}, as camadas expõem seus serviços por meio de interfaces públicas, permitindo que 
+uma camada utilize funcionalidades fornecidas por outra sem depender de seus detalhes internos de implementação. Assim, o uso 
+de interfaces entre camadas não descaracteriza a arquitetura em camadas, mas representa uma forma de controlar o acoplamento 
+entre seus elementos.
+
+Dessa forma, a arquitetura em camadas organiza o software por meio de níveis de responsabilidade e relações de dependência controladas.
+Essa característica torna o padrão relevante para estudos sobre modularidade, uma vez que a forma como as camadas são estruturadas
+influencia diretamente o acoplamento entre os componentes e a separação de responsabilidades no sistema.
+
+\subsection{Arquitetura Hexagonal}
 \label{sec:arquitetura-hexagonal}
 
-Como funciona
-Vantagens
-Limitações
+A arquitetura hexagonal, também conhecida como \textit{Ports and Adapters}, foi proposta por \citeonline{cockburn2005} com 
+o objetivo de permitir que uma aplicação seja desenvolvida e testada de forma isolada em relação às tecnologias externas 
+utilizadas em sua execução. Nesse modelo, a aplicação deve ser capaz de interagir com diferentes mecanismos externos, como 
+interfaces de usuário, bancos de dados, testes automatizados, scripts ou outros sistemas, sem que suas regras internas dependam
+diretamente dessas tecnologias \cite{cockburn2005}.
 
-\section{Métricas de Software}
-\label{sec:metricas-de-software}
+Segundo \citeonline{cockburn2005}, a motivação central desse padrão está relacionada à necessidade de evitar o acoplamento entre a 
+lógica da aplicação e os elementos externos ao sistema. O autor destaca que problemas semelhantes ocorrem tanto quando regras de negócio 
+são incorporadas à interface com o usuário quanto quando a lógica da aplicação passa a depender diretamente de bancos de dados ou serviços 
+externos. Nesses casos, alterações tecnológicas podem afetar partes centrais do sistema, dificultando testes e a substituição de mecanismos 
+externos.
 
-O que são métricas
-Importância
+A solução proposta pela arquitetura hexagonal consiste em estabelecer uma separação entre o interior e o exterior da aplicação. O núcleo 
+da aplicação comunica-se com elementos externos por meio de portas, que representam interfaces ou protocolos de interação. Os adaptadores, 
+por sua vez, são responsáveis por converter chamadas, mensagens ou sinais específicos de uma tecnologia externa para uma forma compreensível 
+pela aplicação, e vice-versa \cite{cockburn2005}. A Figura \ref{fig:arquitetura-hexagonal} apresenta uma representação desse padrão.
 
-\section{Métricas Estruturais em OO}
-\label{sec:metricas-estruturais-em-oo}
+\begin{figure}[htb]
+\centering
+\caption{Representação do padrão arquitetural hexagonal}
+\includegraphics[width=0.90\textwidth]{figuras/arquitetura-hexagonal.png}
+\label{fig:arquitetura-hexagonal}
 
-CK Metrics
-Métricas de acoplamento/coerção
-Métricas de pacote (Robert Martin)
+\vspace{0.1cm}
+\footnotesize Fonte: Elaborado pelo autor (2026), com base em \citeonline{cockburn2005}.
+
+\end{figure}
+
+Nesse padrão, o termo ``hexagonal'' não indica que a aplicação deve possuir exatamente seis lados ou seis interfaces. De acordo 
+com \citeonline{cockburn2005}, o uso do hexágono busca representar visualmente a existência de múltiplas portas ao redor da aplicação, 
+destacando a separação entre o núcleo interno e os elementos externos. Assim, diferentes tipos de adaptadores podem ser conectados às 
+portas da aplicação, permitindo substituir uma interface gráfica por testes automatizados ou trocar um banco de dados real por uma 
+implementação em memória, sem alterar as regras internas do sistema \cite{cockburn2005}.
+
+Em implementações orientadas a objetos, as portas podem ser representadas por interfaces de programação que definem os serviços oferecidos 
+ou requeridos pelo núcleo da aplicação. Os adaptadores implementam essas portas e conectam a aplicação a tecnologias específicas, como 
+interfaces gráficas, APIs, mecanismos de persistência ou serviços externos \cite{cockburn2005}. Essa organização favorece a independência 
+tecnológica, pois as regras internas da aplicação permanecem separadas dos detalhes de infraestrutura e integração.
+
+A arquitetura hexagonal diferencia-se da arquitetura em camadas por enfatizar a relação entre o interior e o exterior da aplicação, em vez 
+de representar o sistema apenas como uma sequência vertical de camadas \cite{cockburn2005}. Enquanto a arquitetura em camadas organiza o 
+software em níveis hierárquicos de responsabilidade, a arquitetura hexagonal concentra-se na proteção do núcleo da aplicação contra 
+dependências tecnológicas externas. Essa característica torna o padrão relevante para estudos sobre modularidade, uma vez que a forma 
+como portas e adaptadores são definidos pode influenciar as dependências entre componentes e a separação entre regras de negócio e 
+infraestrutura.
+
+\section{Modularidade em Software}
+\label{sec:modularidade-em-software}
+
+A modularidade está diretamente relacionada à forma como um sistema é dividido em partes menores e mais gerenciáveis \cite{parnas1972}. 
+Em sistemas modulares, as funcionalidades são organizadas em unidades relativamente independentes, permitindo que cada módulo 
+desempenhe responsabilidades específicas e possa ser compreendido, desenvolvido e modificado com menor impacto sobre os demais 
+componentes do sistema.
+
+Um dos trabalhos pioneiros sobre modularização foi apresentado por \citeonline{parnas1972}, que argumenta que a decomposição de sistemas
+em módulos deve ser realizada de forma a minimizar a propagação de mudanças entre diferentes partes do software. Segundo o autor, uma 
+estrutura modular adequada reduz a complexidade do desenvolvimento e facilita atividades de manutenção, evolução e correção de defeitos.
+
+De acordo com \citeonline{sommerville2011}, sistemas complexos podem ser organizados em componentes com responsabilidades específicas, 
+favorecendo sua compreensão e reduzindo a complexidade do desenvolvimento. Essa decomposição também contribui para a reutilização de 
+funcionalidades, uma vez que componentes bem definidos podem ser empregados em diferentes contextos com menor necessidade de modificações.
+
+A importância da modularidade está associada à capacidade de controlar a complexidade inerente ao desenvolvimento de software. Segundo
+\citeonline{pressman2010}, sistemas de grande porte tornam-se progressivamente mais difíceis de compreender e modificar quando
+apresentam dependências excessivas entre seus componentes. Nesse contexto, a modularização surge como uma estratégia para organizar 
+responsabilidades e limitar o impacto das mudanças realizadas ao longo do ciclo de vida do software.
+
+Embora o conceito de modularidade seja amplamente discutido na literatura, sua avaliação objetiva não é uma tarefa trivial. Conforme discutido por
+\citeonline{fenton2015}, atributos relacionados à qualidade interna do software frequentemente apresentam natureza abstrata e, por esse motivo,
+podem ser avaliados por meio de indicadores quantitativos. Dessa forma, características associadas à modularidade são frequentemente 
+investigadas por intermédio de métricas estruturais capazes de mensurar propriedades observáveis do código-fonte.
+
+Entre os atributos frequentemente associados à avaliação da modularidade e da qualidade estrutural de sistemas orientados a objetos 
+destacam-se o acoplamento, a coesão e a complexidade estrutural \cite{pressman2010,fenton2015}. Assim, esses atributos serão discutidos
+nas subseções seguintes pois permitem analisar diferentes aspectos da organização estrutural do software.
+
+\subsection{Acoplamento}
+\label{sec:acoplamento}
+
+O acoplamento representa o grau de dependência existente entre módulos, componentes ou classes de um sistema de software. 
+Em sistemas orientados a objetos, essa dependência ocorre quando uma classe estabelece relacionamentos com outras classes para 
+utilizar seus serviços, trocar dados ou acessar elementos necessários à implementação de suas responsabilidades \cite{pressman2010}.
+
+Segundo \citeonline{pressman2010}, à medida que componentes se tornam mais interdependentes, o grau de acoplamento aumenta. 
+Como consequência, alterações realizadas em um componente tendem a produzir impactos em outros componentes relacionados.
+
+Embora algum nível de acoplamento seja inevitável em sistemas de software, uma vez que seus componentes precisam se comunicar 
+para executar suas funcionalidades, \citeonline{pressman2010} destaca que o projeto deve buscar reduzi-lo sempre que possível. 
+Sistemas com baixo acoplamento favorecem a independência entre módulos, limitam a propagação de mudanças e facilitam a reutilização
+dos componentes.
+
+O conceito de baixo acoplamento também está relacionado ao princípio da ocultação de informações (\textit{information hiding}) proposto 
+por \citeonline{parnas1972}. Segundo esse princípio, os módulos devem expor apenas as informações estritamente necessárias para sua 
+utilização, preservando seus detalhes internos de implementação. Dessa forma, modificações realizadas em um componente tendem a produzir 
+menor impacto sobre os demais elementos do sistema.
+
+O acoplamento constitui, portanto, um atributo importante para a organização de sistemas modulares, uma vez que influencia a independência
+entre componentes e a propagação de mudanças ao longo do software. Entretanto, a qualidade estrutural de um sistema não depende apenas
+das relações estabelecidas entre seus módulos, mas também da organização interna de cada um deles. Esse aspecto é representado pelo 
+conceito de coesão, discutido na subseção seguinte.
+
+\subsection{Coesão}
+\label{sec:coesao}
+
+A coesão refere-se ao grau de relacionamento existente entre os elementos internos de um módulo ou classe. Em sistemas orientados a
+objetos, um componente é considerado coeso quando encapsula atributos e operações fortemente relacionados entre si e direcionados
+a um mesmo propósito \cite{pressman2010}.
+
+Segundo \citeonline{pressman2010}, a coesão constitui uma característica desejável em projetos de software, pois componentes cujos 
+elementos estão fortemente relacionados tendem a ser mais simples de implementar, testar e manter. Em contrapartida, componentes que
+agrupam funcionalidades pouco relacionadas costumam apresentar maior complexidade e dificultam atividades de manutenção e evolução do
+sistema.
+
+De acordo com \citeonline{bass2012}, a coesão está diretamente relacionada ao grau de associação entre as responsabilidades atribuídas 
+a um módulo. Os autores descrevem esse atributo como uma medida da ``unidade de propósito'' (\textit{unity of purpose}) de um componente, 
+indicando que módulos altamente coesos tendem a concentrar responsabilidades relacionadas, reduzindo a probabilidade de que uma mudança 
+em uma responsabilidade afete funcionalidades distintas.
+
+Assim como o acoplamento descreve as dependências existentes entre diferentes componentes, a coesão concentra-se na organização interna 
+de cada módulo. Dessa forma, sistemas modulares buscam simultaneamente reduzir as dependências entre componentes e concentrar responsabilidades
+relacionadas em unidades bem definidas.
+
+Nesse contexto, a coesão constitui um atributo relevante para avaliação da modularidade de sistemas de software, complementando a análise do acoplamento 
+ao considerar a forma como responsabilidades e funcionalidades são organizadas no interior de cada componente. Além disso, a avaliação da qualidade estrutural 
+também envolve a análise da complexidade resultante da organização e das relações estabelecidas entre os elementos do sistema.
+
+\subsection{Complexidade}
+\label{sec:complexidade}
+
+Neste trabalho, a complexidade é compreendida sob uma perspectiva estrutural, estando relacionada à dificuldade de compreender a organização de 
+um sistema de software e as relações estabelecidas entre seus elementos \cite{pressman2010,fenton2015}. Em sistemas orientados a objetos, essa 
+complexidade pode ser observada a partir da forma como classes, métodos e dependências se organizam e interagem ao longo da estrutura do sistema.
+
+Segundo \citeonline{pressman2010}, existem diferentes formas de compreender a complexidade de software. No contexto de projetos orientados a objetos, 
+a complexidade pode ser analisada a partir de características estruturais, especialmente pela forma como as classes se relacionam entre si. Dessa maneira, 
+sistemas com maior quantidade de elementos interdependentes tendem a exigir maior esforço de compreensão, manutenção e evolução.
+
+De forma complementar, \citeonline{fenton2015} associa a complexidade estrutural à complexidade das conexões entre os elementos de um modelo de sistema. 
+Para os autores, essa complexidade depende do número de ligações existentes entre os elementos, indicando que sistemas com maior quantidade de relações 
+estruturais tendem a apresentar maior complexidade interna. Assim, a análise da complexidade estrutural permite observar não apenas a quantidade de elementos 
+presentes no sistema, mas também como esses elementos estão conectados.
+
+No contexto desta pesquisa, a complexidade é analisada a partir de propriedades observáveis no código-fonte dos sistemas. Dessa forma, não se pretende
+avaliar a complexidade algorítmica ou o desempenho das aplicações, mas sim características relacionadas à organização das classes, à quantidade de operações
+e ao potencial de interação entre os componentes.
+
+Assim, a complexidade estrutural complementa os conceitos de acoplamento e coesão na avaliação da qualidade estrutural do software. Enquanto o acoplamento 
+considera as dependências entre classes e a coesão considera a organização interna de cada módulo, a complexidade contribui para compreender o esforço necessário 
+para analisar, modificar e evoluir os elementos estruturais do sistema.
+
+% \section{Métricas de Software}
+% \label{sec:metricas-de-software}
+
+% A avaliação da qualidade de software envolve atributos frequentemente abstratos, como modularidade, manutenibilidade, complexidade e reutilização. Embora esses conceitos sejam amplamente discutidos na literatura, sua mensuração objetiva representa um desafio importante para pesquisadores e profissionais da Engenharia de Software. Nesse contexto, métricas de software surgem como instrumentos capazes de transformar características qualitativas em indicadores quantitativos observáveis.
+
+% Segundo \citeonline{fenton2015}, uma métrica de software consiste em uma medida utilizada para quantificar atributos relacionados a produtos, processos ou recursos de software. A utilização de métricas permite que propriedades normalmente avaliadas de maneira subjetiva sejam analisadas por meio de dados objetivos, favorecendo a comparação entre sistemas e apoiando a tomada de decisões durante o desenvolvimento e manutenção de software.
+
+% De acordo com \citeonline{sommerville2019}, a medição desempenha papel fundamental na Engenharia de Software por possibilitar a compreensão do comportamento de sistemas complexos. A coleta sistemática de dados permite identificar tendências, avaliar atributos de qualidade e fornecer evidências quantitativas sobre características estruturais do software.
+
+% As métricas podem ser classificadas de diferentes formas. Uma distinção amplamente adotada na literatura é aquela entre métricas externas e métricas internas. Conforme explicam \citeonline{fenton2015}, métricas externas estão relacionadas ao comportamento do sistema em execução e à percepção de qualidade pelos usuários, enquanto métricas internas são obtidas diretamente a partir dos artefatos de software, como código-fonte, modelos e documentação.
+
+% No contexto desta pesquisa, o interesse concentra-se nas métricas internas, uma vez que o objetivo consiste em analisar características estruturais associadas à modularidade de sistemas orientados a objetos. Esse tipo de métrica pode ser obtido por meio de análise estática do código-fonte, permitindo avaliar atributos relacionados ao acoplamento, à coesão e à complexidade sem a necessidade de executar a aplicação.
+
+% A utilização de métricas estruturais também é amplamente observada em estudos empíricos de Engenharia de Software. Conforme discutido nos trabalhos relacionados apresentados anteriormente, métricas orientadas a objetos têm sido empregadas para investigar atributos de qualidade arquitetural, avaliar modularidade e comparar diferentes estratégias de organização de sistemas \cite{ferreira2006,lazzari2022,tsuruta2010}.
+
+% Entretanto, a simples coleta de métricas não garante uma avaliação adequada da qualidade do software. Segundo \citeonline{fenton2015}, a interpretação dos resultados deve estar fundamentada em modelos conceituais que relacionem os valores observados aos atributos que se deseja analisar. Dessa forma, métricas estruturais tornam-se especialmente relevantes quando utilizadas em conjunto com conceitos como acoplamento, coesão e modularidade.
+
+% Entre as diversas abordagens propostas para avaliação de sistemas orientados a objetos, destacam-se as métricas estruturais baseadas em classes e relacionamentos entre componentes. Essas métricas buscam quantificar aspectos relacionados à organização interna do software e constituem uma das formas mais utilizadas para investigação da qualidade estrutural de aplicações orientadas a objetos.
+
+% \section{Métricas Estruturais em OO}
+% \label{sec:metricas-estruturais-em-oo}
+
+% O paradigma orientado a objetos introduziu novos mecanismos para organização de software, como encapsulamento, herança, abstração e polimorfismo. Embora esses conceitos contribuam para a construção de sistemas mais flexíveis e reutilizáveis, também tornam mais complexa a avaliação objetiva da qualidade estrutural do software. Em razão disso, diversas métricas específicas para sistemas orientados a objetos foram propostas com o objetivo de quantificar características relacionadas ao projeto e à implementação das aplicações.
+
+% Segundo \citeonline{chidamber1994}, métricas orientadas a objetos devem ser capazes de capturar propriedades estruturais relevantes das classes e dos relacionamentos estabelecidos entre elas. Essas métricas permitem avaliar atributos associados à qualidade interna do software, fornecendo indicadores quantitativos sobre aspectos como acoplamento, coesão, reutilização e complexidade.
+
+% Entre as propostas existentes na literatura, destaca-se o conjunto de métricas desenvolvido por \citeonline{chidamber1994}, amplamente conhecido como suíte CK. Esse conjunto tornou-se uma das abordagens mais utilizadas em estudos empíricos de Engenharia de Software devido à sua fundamentação teórica e à sua capacidade de representar diferentes características estruturais de sistemas orientados a objetos.
+
+% Conforme observam \citeonline{ferreira2006}, métricas orientadas a objetos podem ser empregadas para avaliar propriedades relacionadas à modularidade, auxiliando na identificação de estruturas excessivamente acopladas, componentes com baixa coesão e elementos potencialmente mais difíceis de manter. De forma semelhante, trabalhos recentes continuam utilizando métricas estruturais como instrumento para investigação da qualidade arquitetural e da organização interna de sistemas de software \cite{lazzari2022,tsuruta2010}.
+
+% No contexto desta pesquisa, a análise será realizada em nível de classe, uma vez que as métricas selecionadas foram originalmente concebidas para esse nível de granularidade e são amplamente utilizadas para avaliação de sistemas orientados a objetos. A escolha dessa abordagem também está alinhada ao objetivo do estudo, que consiste em investigar como diferentes estilos arquiteturais influenciam atributos estruturais relacionados à modularidade.
+
+% As métricas consideradas nesta pesquisa abrangem diferentes perspectivas da estrutura do software. Algumas concentram-se na avaliação das dependências existentes entre classes, enquanto outras buscam mensurar aspectos relacionados à coesão interna e à complexidade dos componentes. Em conjunto, esses indicadores fornecem uma visão quantitativa da organização estrutural dos sistemas analisados.
+
+% Nas subseções seguintes são apresentadas as métricas utilizadas neste trabalho, bem como os conceitos teóricos que fundamentam sua aplicação na avaliação da modularidade de sistemas orientados a objetos.
+
+% \subsection{CBO}
+% \label{sec:cbo}
+
+% A métrica \textit{Coupling Between Objects} (CBO) foi proposta por \citeonline{chidamber1994} com o objetivo de mensurar o grau de acoplamento existente entre uma classe e as demais classes do sistema. Em termos gerais, a métrica contabiliza a quantidade de classes com as quais uma determinada classe mantém algum tipo de dependência estrutural.
+
+% Segundo \citeonline{chidamber1994}, duas classes são consideradas acopladas quando métodos ou atributos de uma delas utilizam elementos definidos pela outra. Essas dependências podem ocorrer por meio de chamadas de métodos, acesso a atributos, parâmetros, tipos de retorno ou associações estabelecidas durante a implementação do software.
+
+% O acoplamento constitui um dos principais atributos relacionados à modularidade de sistemas orientados a objetos. Conforme discutido anteriormente, classes excessivamente dependentes de outros componentes tendem a apresentar maior sensibilidade a mudanças, uma vez que modificações realizadas em uma classe podem propagar efeitos para diversas partes da aplicação \cite{pressman2010,sommerville2019}.
+
+% Nesse contexto, a métrica CBO fornece um indicador quantitativo da quantidade de relacionamentos externos mantidos por uma classe. Valores elevados de CBO sugerem maior dependência em relação a outros componentes do sistema, o que pode dificultar atividades de manutenção, teste e evolução do software. Por outro lado, valores menores tendem a indicar estruturas mais independentes e potencialmente mais modulares.
+
+% Entretanto, \citeonline{chidamber1994} ressaltam que a existência de acoplamento não deve ser interpretada necessariamente como um problema. Em sistemas orientados a objetos, determinadas dependências são naturais e frequentemente necessárias para implementação das funcionalidades do software. Assim, a interpretação da métrica deve considerar o contexto arquitetural e os objetivos do sistema analisado.
+
+% Devido à sua relação direta com o conceito de acoplamento, a métrica CBO é amplamente utilizada em estudos que investigam modularidade e qualidade estrutural de software. Nesta pesquisa, seus valores serão utilizados para analisar como diferentes estilos arquiteturais influenciam a quantidade de dependências estabelecidas entre classes.
+
+% \subsection{LCOM}
+% \label{sec:lcom}
+
+% A métrica \textit{Lack of Cohesion in Methods} (LCOM) foi proposta por \citeonline{chidamber1994} com o objetivo de avaliar o grau de coesão existente em uma classe. Seu princípio fundamental consiste em analisar o relacionamento entre métodos e atributos, verificando até que ponto os métodos da classe compartilham os mesmos dados e contribuem para uma responsabilidade comum.
+
+% Segundo \citeonline{chidamber1994}, classes bem projetadas tendem a apresentar métodos fortemente relacionados entre si, utilizando um conjunto comum de atributos para implementar funcionalidades associadas a um mesmo propósito. Quando os métodos operam sobre conjuntos distintos de atributos ou apresentam pouca relação funcional, a coesão da classe diminui.
+
+% A coesão é considerada um atributo desejável em sistemas orientados a objetos, pois está associada à clareza das responsabilidades e à facilidade de manutenção do software. Conforme destacam \citeonline{pressman2010}, componentes altamente coesos são mais compreensíveis, mais simples de modificar e menos suscetíveis à introdução de defeitos durante a evolução do sistema.
+
+% Nesse contexto, a métrica LCOM fornece uma estimativa quantitativa da dispersão das responsabilidades existentes em uma classe. Valores elevados indicam menor coesão, sugerindo que os métodos possuem pouca interação entre si ou que a classe concentra responsabilidades excessivamente distintas. Em contrapartida, valores reduzidos tendem a indicar maior integração entre os elementos internos da classe e melhor definição de propósito.
+
+% De acordo com \citeonline{sommerville2019}, classes que acumulam múltiplas responsabilidades frequentemente apresentam maior dificuldade de manutenção e menor capacidade de reutilização. Assim, a análise da coesão constitui um aspecto relevante para avaliação da modularidade estrutural de sistemas orientados a objetos.
+
+% Embora a métrica LCOM represente uma aproximação da coesão, ela é amplamente utilizada na literatura como indicador da qualidade interna de classes e da distribuição de responsabilidades em sistemas orientados a objetos. Nesta pesquisa, seus valores serão empregados para investigar como diferentes estilos arquiteturais influenciam a organização interna das classes e o grau de coesão presente nos sistemas analisados.
+
+% \subsection{RFC}
+% \label{sec:rfc}
+
+% A métrica \textit{Response For a Class} (RFC) foi proposta por \citeonline{chidamber1994} para estimar a quantidade potencial de métodos que podem ser executados em resposta a uma mensagem recebida por uma classe. Em outras palavras, a métrica considera não apenas os métodos definidos na própria classe, mas também os métodos externos que podem ser invocados durante a execução de suas operações.
+
+% Segundo \citeonline{chidamber1994}, o conjunto de resposta de uma classe corresponde ao total de métodos potencialmente executáveis a partir da chamada de seus métodos públicos. Dessa forma, a RFC busca representar a complexidade comportamental associada ao uso da classe e às interações que ela estabelece com outros componentes do sistema.
+
+% Classes com valores elevados de RFC tendem a apresentar maior quantidade de comportamentos acessíveis e maior número de interações durante sua execução. Como consequência, a compreensão dessas classes pode demandar maior esforço por parte dos desenvolvedores, uma vez que seu funcionamento depende de um conjunto mais amplo de métodos e fluxos de execução.
+
+% De acordo com \citeonline{pressman2010}, o aumento da complexidade de um componente pode impactar negativamente atividades de manutenção e teste. Quanto maior o número de comportamentos possíveis associados a uma classe, mais difícil tende a ser a identificação dos efeitos produzidos por modificações realizadas em sua implementação.
+
+% Além disso, \citeonline{sommerville2019} observam que componentes excessivamente complexos podem dificultar a evolução do software ao longo do tempo, especialmente em sistemas de grande porte. Nesse contexto, métricas que quantificam aspectos relacionados à complexidade estrutural e comportamental tornam-se importantes instrumentos para avaliação da qualidade interna do software.
+
+% Embora a RFC não represente diretamente o acoplamento ou a coesão de uma classe, seus valores podem fornecer indícios relevantes sobre a complexidade associada à sua utilização e manutenção. Nesta pesquisa, a métrica será empregada como um indicador complementar para análise da modularidade estrutural dos sistemas estudados, permitindo observar possíveis diferenças na complexidade comportamental decorrentes dos estilos arquiteturais adotados.
+
+% \subsection{WMC}
+% \label{sec:wmc}
+
+% A métrica \textit{Weighted Methods per Class} (WMC) foi proposta por \citeonline{chidamber1994} com o objetivo de mensurar a complexidade associada a uma classe por meio da quantidade e das características dos métodos que ela implementa. Em sua formulação original, a métrica corresponde à soma dos pesos atribuídos aos métodos da classe, sendo esses pesos geralmente relacionados à complexidade de cada método.
+
+% Segundo \citeonline{chidamber1994}, classes que possuem grande quantidade de métodos tendem a concentrar mais funcionalidades e comportamentos, aumentando o esforço necessário para sua compreensão, manutenção e teste. Dessa forma, a WMC pode ser utilizada como um indicador da complexidade estrutural associada à implementação de uma classe.
+
+% De acordo com \citeonline{pressman2010}, o aumento da complexidade interna dos componentes de software está frequentemente relacionado à redução da manutenibilidade e ao aumento da probabilidade de defeitos. Componentes excessivamente complexos podem demandar maior esforço para implementação de modificações e dificultar a identificação dos impactos decorrentes de alterações realizadas ao longo do ciclo de vida do sistema.
+
+% Além disso, \citeonline{sommerville2019} observam que classes responsáveis por múltiplas funcionalidades tendem a apresentar menor modularidade e maior dificuldade de evolução. Embora a quantidade de métodos não represente, isoladamente, um indicador definitivo de qualidade, valores elevados podem sugerir concentração excessiva de responsabilidades em determinados componentes.
+
+% Na ferramenta CK utilizada nesta pesquisa, a métrica WMC é calculada com base na quantidade de métodos definidos em cada classe. Assim, seus valores representam uma estimativa da complexidade estrutural dos componentes analisados, permitindo identificar possíveis diferenças na distribuição de responsabilidades entre os sistemas estudados.
+
+% Por esse motivo, a métrica será utilizada como um indicador complementar para avaliação da modularidade estrutural, fornecendo evidências sobre como os diferentes estilos arquiteturais influenciam a organização e a complexidade das classes implementadas.
+
+% \subsection{Fan-in e Fan-out}
+% \label{sec:fan-in-e-fan-out}
+
+% As métricas Fan-In e Fan-Out são utilizadas para analisar as dependências existentes entre componentes de um sistema de software. Diferentemente da métrica CBO, que contabiliza a quantidade total de classes relacionadas a uma determinada classe, essas métricas procuram identificar a direção das dependências estabelecidas, fornecendo uma visão complementar da estrutura do sistema.
+
+% Segundo \citeonline{marinescu2006}, o Fan-In representa a quantidade de componentes que dependem de uma determinada classe. Em sistemas orientados a objetos, essa métrica pode ser interpretada como um indicador do grau de utilização ou reutilização de um componente dentro da aplicação. Classes com valores elevados de Fan-In tendem a ocupar posições centrais na estrutura do software, sendo utilizadas por diversos outros componentes.
+
+% Por outro lado, o Fan-Out corresponde à quantidade de componentes dos quais uma determinada classe depende para executar suas responsabilidades \cite{marinescu2006}. Dessa forma, a métrica fornece uma estimativa do grau de dependência externa associado a uma classe. Valores elevados podem indicar maior acoplamento estrutural e maior sensibilidade a alterações realizadas em componentes relacionados.
+
+% A análise conjunta dessas métricas permite compreender não apenas a existência de dependências, mas também a forma como elas se distribuem no sistema. Uma classe pode apresentar elevado Fan-In e baixo Fan-Out, caracterizando um componente amplamente reutilizado e relativamente independente. Em contrapartida, valores reduzidos de Fan-In combinados com elevado Fan-Out podem indicar componentes fortemente dependentes de outros elementos da aplicação.
+
+% De acordo com \citeonline{fenton2015}, métricas relacionadas às dependências estruturais são particularmente úteis para investigação da modularidade de sistemas de software, uma vez que permitem identificar pontos de concentração de responsabilidades e potenciais fontes de propagação de mudanças. Nesse contexto, Fan-In e Fan-Out fornecem informações complementares às métricas tradicionais de acoplamento.
+
+% Nesta pesquisa, ambas as métricas serão utilizadas para analisar a distribuição das dependências entre as classes dos sistemas estudados. Em conjunto com a métrica CBO, esses indicadores contribuirão para a avaliação quantitativa do acoplamento estrutural associado aos diferentes estilos arquiteturais investigados.
