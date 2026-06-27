@@ -19,7 +19,7 @@ Dentre os estilos arquiteturais amplamente utilizados, destacam-se a arquitetura
 em camadas organiza o sistema em níveis hierárquicos, nos quais cada camada possui responsabilidades específicas, promovendo separação 
 de responsabilidades \cite{fowler2003}. Por outro lado, a arquitetura hexagonal, também conhecida como Ports and Adapters, 
 propõe o isolamento do núcleo da aplicação em relação às dependências externas, favorecendo maior independência tecnológica e 
-testabilidade \cite{cockburn2005}. Embora ambos os estilos sejam amplamente discutidos na literatura e utilizados na prática, 
+testabilidade \cite{cockburn2005}. Embora ambos os estilos sejam discutidos na literatura e utilizados na prática, 
 seus impactos na modularidade nem sempre são avaliados de forma quantitativa.
 
 Nesse cenário, métricas de software surgem como instrumentos fundamentais para a avaliação objetiva da qualidade estrutural.
@@ -28,24 +28,26 @@ soluções \cite{fenton2015}. Em particular, métricas estruturais para sistemas
 \citeonline{chidamber1994}, são amplamente utilizadas para avaliar atributos internos do software, tais como acoplamento, 
 coesão e complexidade, os quais influenciam diretamente a modularidade e a organização estrutural dos componentes.
 
-Apesar da existência de diversos estudos que aplicam métricas de software para análise de sistemas, ainda há limitações na literatura 
-no que diz respeito à comparação empírica entre diferentes estilos arquiteturais. Alguns trabalhos concentram-se em arquiteturas 
-específicas, analisando seus impactos na modularidade em cenários controlados. Outros estudos realizam comparações entre estilos 
-arquiteturais distintos, porém frequentemente baseados em revisões teóricas, sem a utilização de dados extraídos de sistemas reais.
+Apesar da existência de estudos que utilizam métricas de software para avaliar características estruturais de sistemas, 
+ainda são limitadas as investigações que comparam, de forma quantitativa, a arquitetura em camadas e a arquitetura hexagonal 
+sob a perspectiva da modularidade. Esses dois estilos arquiteturais propõem formas distintas de organizar responsabilidades e 
+dependências no software, mas seus efeitos sobre atributos como acoplamento, coesão e complexidade estrutural nem sempre são 
+analisados a partir de dados extraídos diretamente do código-fonte.
 
-Diante desse contexto, observa-se uma lacuna na realização de estudos experimentais que investiguem, de forma quantitativa, 
-o impacto de diferentes estilos arquiteturais na modularidade de sistemas orientados a objetos, utilizando aplicações reais como 
-objeto de análise. Assim, este trabalho propõe avaliar a modularidade de sistemas orientados a objetos por meio da aplicação de 
-métricas estruturais, realizando um estudo comparativo entre arquitetura em camadas e arquitetura hexagonal. A análise será conduzida 
-a partir de dois sistemas desenvolvidos previamente, permitindo a obtenção de evidências empíricas sobre os efeitos das decisões 
-arquiteturais na qualidade estrutural do software.
+Diante desse contexto, este trabalho propõe avaliar a modularidade de sistemas orientados a objetos por meio da aplicação de métricas 
+estruturais, realizando um estudo comparativo entre arquitetura em camadas e arquitetura hexagonal. A análise será conduzida a partir 
+de dois sistemas previamente desenvolvidos, permitindo observar como os estilos arquiteturais adotados podem se refletir em 
+características estruturais mensuráveis do software.
 
 Este trabalho está organizado da seguinte forma: 
 o Capítulo \ref{cap:fundamentacao-teorica} apresenta a fundamentação teórica, abordando conceitos de modularidade, arquitetura de software e métricas estruturais; 
 o Capítulo \ref{cap:trabalhos-relacionados}, discorre sobre alguns trabalhos relacionados; 
 o Capítulo \ref{cap:metodologia} descreve a metodologia adotada;  
-o Capítulo \ref{cap:resultados} discute os resultados obtidos; 
-e, por fim, o Capítulo \ref{cap:conclusoes} apresenta as conclusões. 
+o Capítulo 5 discutirá os resultados obtidos; 
+e, por fim, o Capítulo 6 apresentará as conclusões.
+
+% o Capítulo \ref{cap:resultados} discute os resultados obtidos; 
+% e, por fim, o Capítulo \ref{cap:conclusoes} apresenta as conclusões. 
 
 \section{Objetivos}
 \label{sec:objetivos}

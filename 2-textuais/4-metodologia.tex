@@ -1,44 +1,22 @@
 \chapter{Metodologia}
 \label{cap:metodologia}
 
-Este capítulo apresenta os procedimentos metodológicos adotados para a condução da pesquisa. Inicialmente, são descritas 
-a classificação e a estratégia da investigação. Em seguida, são apresentados os objetos de estudo, as métricas utilizadas 
-para avaliação da modularidade, os procedimentos de coleta dos dados e as etapas do experimento proposto.
+Este capítulo apresenta os procedimentos adotados para condução da pesquisa. Inicialmente, são caracterizados os sistemas analisados. 
+Em seguida, é descrito o fluxo metodológico adotado, composto pela extração das métricas estruturais, processamento automatizado dos 
+dados e análise dos dados processados. Por fim, é apresentado o cronograma de execução.
 
-\section{Classificação da Pesquisa}
-\label{sec:classificacao-da-pesquisa}
+A Figura \ref{fig:fluxo-metodologico} apresenta uma visão geral do fluxo metodológico adotado nesta pesquisa.
 
-Segundo \citeonline{gil2008}, as pesquisas podem ser classificadas quanto à natureza, aos objetivos, à abordagem do problema e
-aos procedimentos técnicos. Sob essa perspectiva, este trabalho caracteriza-se como uma pesquisa aplicada, descritiva, de 
-abordagem quantitativa e conduzida por meio de um estudo experimental.
+\begin{figure}[htb]
+\centering
+\caption{Fluxo metodológico da pesquisa}
+\includegraphics[width=0.9\textwidth]{figuras/fluxo-metodologico.png}
+\label{fig:fluxo-metodologico}
 
-A pesquisa é classificada como aplicada por buscar produzir conhecimento com potencial de utilização prática na avaliação da 
-modularidade e da qualidade estrutural de sistemas de software. Além disso, possui caráter descritivo, uma vez que busca 
-identificar, mensurar e comparar características estruturais observadas em sistemas desenvolvidos segundo diferentes estilos 
-arquiteturais.
+\vspace{0.1cm}
+\footnotesize Fonte: Elaborado pelo autor (2026).
 
-A abordagem adotada é quantitativa, fundamentando-se na coleta e análise de dados numéricos obtidos por meio de métricas 
-estruturais extraídas do código-fonte dos sistemas analisados. Por fim, o trabalho configura-se como um estudo experimental,
-pois compara métricas obtidas a partir de dois sistemas implementados segundo arquiteturas distintas, buscando identificar 
-diferenças relacionadas à modularidade estrutural.
-
-\section{Estratégia de Pesquisa}
-\label{sec:estrategia-de-pesquisa}
-
-A estratégia adotada nesta pesquisa consiste na extração e análise de métricas estruturais obtidas a partir de dois
-sistemas desenvolvidos segundo estilos arquiteturais distintos. Os valores observados serão comparados com o objetivo de
-identificar diferenças relacionadas ao acoplamento, à coesão e à complexidade estrutural das classes.
-
-Conforme argumentam \citeonline{fenton2015}, métricas de software permitem transformar propriedades abstratas do projeto em 
-indicadores quantitativos, possibilitando análises mais objetivas sobre qualidade interna e manutenibilidade. Dessa forma, 
-a utilização de métricas estruturais permite investigar empiricamente características normalmente avaliadas de maneira subjetiva.
-
-A unidade de análise desta pesquisa corresponde às classes implementadas em cada sistema. A escolha desse nível de granularidade 
-justifica-se pelo fato de que as métricas selecionadas foram originalmente concebidas para avaliação de sistemas orientados a 
-objetos \cite{chidamber1994}. Além disso, trabalhos relacionados analisados neste estudo demonstram a utilização de métricas estruturais 
-como instrumento para avaliação de modularidade e qualidade arquitetural, seja por meio de métricas orientadas a objetos \cite{ferreira2006} 
-ou de abordagens quantitativas aplicadas à comparação entre estilos arquiteturais \cite{lazzari2022, tsuruta2010}. 
-Dessa forma, a análise em nível de classe é consistente com a literatura e adequada aos objetivos desta pesquisa.
+\end{figure}
 
 \section{Objetos de Estudo}
 \label{sec:objetos-de-estudo}
@@ -84,74 +62,93 @@ Enums & 6 & 18 \\ \hline
 \centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
 \end{table}
 
-Observa-se que os sistemas apresentam quantidades semelhantes de classes, indicando porte estrutural comparável sob essa perspectiva. 
-Essa característica contribui para a realização de uma análise comparativa focada nos efeitos dos estilos arquiteturais sobre métricas 
-relacionadas à modularidade, reduzindo a influência de diferenças significativas de escala entre os projetos.
+Como observa-se na Tabela \ref{tab:caracterizacao-sistemas}, os sistemas apresentam quantidades semelhantes de classes, 
+indicando porte estrutural comparável sob essa perspectiva. Essa característica contribui para a realização de uma análise 
+comparativa focada nos efeitos dos estilos arquiteturais sobre métricas relacionadas à modularidade, reduzindo a influência 
+de diferenças significativas de escala entre os projetos. As quantidades de interfaces e enums são apresentadas apenas para 
+caracterização geral dos sistemas, enquanto a análise das métricas estruturais será conduzida considerando exclusivamente 
+as classes extraídas pela ferramenta.
 
 Os repositórios contendo os sistemas analisados encontram-se disponíveis para consulta e reprodução dos experimentos realizados neste trabalho, 
-conforme apresentado no Apêndice A.
+conforme apresentado no Apêndice \ref{apendice:A}.
 
-\section{Coleta dos Dados}
-\label{sec:coleta-dos-dados}
+\section{Fluxo Metodológico}
+\label{sec:fluxo-metodologico}
 
-A coleta dos dados será realizada por meio de análise estática do código-fonte dos sistemas estudados. Nessa abordagem, 
-as métricas são obtidas diretamente a partir da estrutura do software, sem a necessidade de execução da aplicação. 
-Essa estratégia é compatível com o objetivo da pesquisa, que consiste em avaliar atributos internos relacionados à modularidade 
-por meio de métricas estruturais \cite{fenton2015}.
+As etapas representadas na Figura \ref{fig:fluxo-metodologico} descrevem o procedimento adotado para obtenção e análise das métricas estruturais 
+dos sistemas estudados. O fluxo inicia-se a partir dos dois objetos de estudo definidos nesta pesquisa, SISO e Roomie, e segue com a extração 
+das métricas, o processamento automatizado dos dados e a análise dos dados processados.
 
-Para extração das métricas será utilizada a ferramenta CK, desenvolvida por Mauricio Aniche. A ferramenta realiza a análise estática de 
-projetos Java e gera relatórios contendo métricas estruturais em nível de classe e método \cite{aniche-ck}. O link para acesso a ferramenta CK 
-encontra-se disponível no Apêdice A.
+\subsection{Extração das Métricas Estruturais}
+\label{subsec:extracao-metricas}
 
-Nesta pesquisa serão utilizados exclusivamente os dados extraídos em nível de classe, uma vez que o foco do estudo está na organização
-estrutural dos sistemas e não na complexidade individual de métodos específicos.
+A primeira etapa consiste na extração das métricas estruturais a partir do código-fonte dos sistemas selecionados. A coleta será realizada 
+por meio de análise estática, abordagem na qual as métricas são obtidas diretamente a partir da estrutura do software, sem a necessidade 
+de executar as aplicações \cite{sommerville2011}. Essa estratégia é adequada ao objetivo desta pesquisa, uma vez que o estudo se concentra 
+em atributos internos relacionados à organização estrutural dos sistemas.
 
-\section{Métricas de Avaliação}
-\label{sec:metricas-de-avaliacao}
+Para a extração das métricas será utilizada a ferramenta CK, desenvolvida por Mauricio Aniche. A ferramenta realiza análise estática de 
+projetos Java e gera relatórios contendo métricas em nível de classe e de método \cite{aniche-ck}. Nesta pesquisa, serão utilizados 
+exclusivamente os dados extraídos em nível de classe, pois o foco do estudo está na organização estrutural dos sistemas e não na 
+complexidade individual de métodos específicos. O link para a ferramenta CK encontra-se disponível no Apêndice \ref{apendice:A}.
 
-As métricas utilizadas neste estudo seguem as definições clássicas propostas por Chidamber e Kemerer \cite{chidamber1994}, enquanto a operacionalização
-dos cálculos segue a implementação fornecida pela ferramenta CK \cite{aniche-ck}.
+A unidade de análise corresponde aos registros em nível de classe gerados pela ferramenta CK. Esse nível de análise é coerente com o 
+foco da pesquisa em sistemas orientados a objetos, uma vez que parte das métricas selecionadas foi concebida para avaliação de características 
+estruturais de classes \cite{chidamber1994}. Além disso, trabalhos relacionados analisados neste estudo utilizam métricas estruturais como 
+instrumento para avaliação de modularidade e qualidade arquitetural, seja por meio de métricas orientadas a objetos \cite{ferreira2006}, 
+seja por abordagens quantitativas aplicadas à comparação entre estilos arquiteturais \cite{lazzari2022,tsuruta2010}.
 
-As métricas selecionadas foram escolhidas por sua relação direta com atributos associados à modularidade, especialmente acoplamento, 
-coesão e complexidade estrutural, sendo descritas na Tabela \ref{tab:metricas}.
- 
-Embora o conjunto original de 1994 seja composto por seis métricas, este trabalho utiliza apenas quatro delas, excluindo propositalmente DIT e NOC. Essa decisão 
-justifica-se pelo fato de DIT e NOC avaliarem predominantemente a genealogia e a hierarquia de herança das classes. Como o foco central deste TCC é a modularidade
-estrutural e o acoplamento entre camadas e portas, métricas ligadas à herança não trariam conclusões relevantes para a comparação dos estilos arquiteturais analisados. 
+As métricas utilizadas foram selecionadas com base em sua relação com atributos associados à modularidade e à qualidade estrutural de sistemas 
+orientados a objetos, especialmente acoplamento, coesão e complexidade. Parte dessas métricas deriva da suíte CK, proposta por 
+\citeonline{chidamber1994}, enquanto Fan-In e Fan-Out são incorporadas como métricas complementares para análise das dependências 
+estruturais entre classes \cite{yourdon1978,sommerville2011}.
 
-Para complementar a análise, foram incorporadas as métricas Fan-In e Fan-Out. Apesar de não integrarem a suíte original de 1994, elas foram selecionadas por 
-fornecerem uma visão granular das dependências de entrada e saída, o que é relevante para avaliar a comunicação entre os componentes de cada sistema.
+Embora a suíte CK original seja composta por seis métricas, este trabalho utiliza CBO, LCOM, RFC e WMC, excluindo DIT e NOC. Essa decisão 
+justifica-se pelo fato de DIT e NOC estarem mais diretamente relacionadas à profundidade e à estrutura de hierarquias de herança. Como o 
+foco desta pesquisa está na modularidade estrutural, nas dependências entre classes e na separação de responsabilidades promovida pelos 
+estilos arquiteturais analisados, métricas centradas em herança não foram priorizadas.
+
+Para complementar a análise, foram incorporadas as métricas Fan-In e Fan-Out. Essas métricas permitem observar, respectivamente, a quantidade 
+de dependências recebidas por uma classe e a quantidade de dependências realizadas por uma classe \cite{yourdon1978,sommerville2011}. Dessa forma,
+elas contribuem para a análise do acoplamento estrutural ao evidenciar a direção e a concentração das dependências entre os componentes 
+dos sistemas estudados. As métricas selecionadas para a análise são descritas na Tabela \ref{tab:metricas}.
 
 \begin{table}[htb]
 \centering
-\caption{Métricas utilizadas na avaliação da modularidade}
+\caption{Métricas utilizadas na avaliação da modularidade estrutural dos sistemas}
 \label{tab:metricas}
 \begin{tabular}{|p{2cm}|p{10cm}|}
 \hline
 \textbf{Métrica} & \textbf{Descrição} \\ \hline
 
 CBO &
-Mede o número de dependências de uma classe com outras classes do sistema. Na ferramenta CK, considera qualquer tipo referenciado na classe 
-(atributos, parâmetros, retornos e variáveis locais), exceto tipos da biblioteca padrão Java \cite{aniche-ck}. \\ \hline
+Conta o número de dependências de uma classe. Na ferramenta CK, essas dependências são identificadas a partir dos tipos 
+utilizados ao longo da classe, incluindo declarações de atributos, tipos de retorno de métodos, parâmetros e declarações
+de variáveis. Dependências associadas à própria biblioteca Java, como \texttt{java.lang.String}, são desconsideradas
+\cite{aniche-ck}. \\ \hline
 
 LCOM* &
-Mede a falta de coesão entre métodos de uma classe. É uma métrica normalizada no intervalo de 0 a 1, em que valores próximos de 0 indicam maior coesão
-e valores próximos de 1 indicam menor coesão. A ferramenta CK disponibiliza a métrica LCOM* em sua forma normalizada. \cite{aniche-ck}. \\ \hline
+Indica a falta de coesão entre os métodos de uma classe. Na ferramenta CK, é utilizada uma versão normalizada da métrica, 
+com valores no intervalo de 0 a 1. Valores próximos de 0 indicam maior coesão, enquanto valores próximos de 1 indicam menor 
+coesão, conforme a definição operacional adotada pela ferramenta \cite{aniche-ck}. \\ \hline
 
 RFC &
-Conta o número de métodos que podem ser potencialmente executados em resposta a uma mensagem recebida pela classe, incluindo métodos próprios e invocações 
-a outros métodos. Na ferramenta CK, é obtido por análise estática de invocações únicas de métodos \cite{aniche-ck}. \\ \hline
+Indica o conjunto de respostas potenciais associado a uma classe. Na ferramenta CK, essa métrica é operacionalizada 
+pela contagem de invocações únicas de métodos identificadas na classe por meio de análise estática \cite{aniche-ck}. \\ \hline
 
 WMC &
-Mede a complexidade de uma classe. Na ferramenta CK, é calculado como o número de instruções de ramificação presentes nos métodos da classe \cite{aniche-ck}. \\ \hline
+Indica a complexidade de uma classe. Na ferramenta CK, é calculado como o número de instruções de ramificação presentes nos 
+métodos da classe \cite{aniche-ck}. \\ \hline
 
 Fan-In &
-Quantifica o número de dependências de entrada de uma classe, correspondendo à quantidade de classes que a referenciam por meio de atributos, acesso a membros
-ou invocação de métodos. Na ferramenta CK, considera todas as referências diretas à classe no código-fonte \cite{aniche-ck}. \\ \hline
+Conta o número de dependências de entrada de uma classe. Na ferramenta CK, corresponde ao número de classes que referenciam 
+a classe analisada, seja por meio de atributos, acesso a atributos, invocação de métodos ou outras formas de referência 
+identificadas por análise estática \cite{aniche-ck}. \\ \hline
 
 Fan-Out &
-Quantifica o número de dependências de saída de uma classe, correspondendo à quantidade de outras classes referenciadas por ela por meio de atributos, 
-instanciação de objetos ou invocação de métodos. Na ferramenta CK, considera todas as referências diretas feitas pela classe no código-fonte \cite{aniche-ck}. \\ \hline
+Conta o número de dependências de saída de uma classe. Na ferramenta CK, corresponde ao número de outras classes referenciadas
+pela classe analisada, seja por meio de atributos, invocações de métodos, instanciação de objetos ou outras formas de 
+referência identificadas por análise estática \cite{aniche-ck}. \\ \hline
 
 \end{tabular}
 
@@ -165,46 +162,67 @@ originais de \citeonline{chidamber1994}. Tais distinções decorrem da operacion
 heurísticas de análise estática específicas para o ecossistema Java. Por exemplo, enquanto o CBO original é definido de forma ampla como
 o acoplamento entre classes, a ferramenta especifica exatamente quais referências (como variáveis locais e retornos) são contabilizadas e
 ignora propositalmente as bibliotecas padrão do Java para garantir maior precisão nos resultados. Da mesma forma, a métrica de coesão 
-utilizada é o LCOM*, uma versão normalizada que difere do cálculo de interseção de conjuntos proposto inicialmente. Para os fins deste 
-estudo, as definições operacionais da ferramenta serão as adotadas, garantindo a consistência entre a extração dos dados e a análise 
-dos resultados.
+utilizada é o LCOM*, uma versão normalizada que difere do cálculo de interseção de conjuntos proposto inicialmente.
 
-\section{Procedimento Experimental}
-\label{sec:procedimento-experimental}
+Para a métrica RFC, a documentação da ferramenta CK indica uma limitação relacionada à resolução estática de invocações em 
+métodos sobrecarregados com a mesma quantidade de parâmetros e tipos diferentes.
 
-O procedimento experimental será executado em três etapas.
+Para garantir consistência na comparação, as mesmas definições operacionais, a mesma ferramenta e os mesmos procedimentos de extração 
+serão aplicados aos dois sistemas analisados. Dessa forma, ainda que existam variações entre definições conceituais e implementações 
+práticas das métricas, a análise comparativa será conduzida com base em critérios uniformes de mensuração.
 
-Inicialmente, a ferramenta CK será executada individualmente nos sistemas SISO e Roomie para extração das métricas estruturais
-definidas nesta pesquisa. A ferramenta realizará a análise estática do código-fonte e produzirá uma planilha como saída contendo 
-os valores das métricas para cada classe identificada nos projetos.
+\subsection{Processamento Automatizado dos Dados}
+\label{subsec:processamento-dados}
 
-Na segunda etapa, os dados extraídos pela ferramenta CK serão processados por meio de um script desenvolvido em Python. 
-O script será responsável pela seleção das métricas definidas na pesquisa, pelo cálculo das medidas de estatística descritiva
-e geração de visualizações gráficas que auxiliem a interpretação e comparação dos resultados. Serão calculadas, para cada métrica,
-as medidas de média, mediana, desvio padrão, mínimo e máximo.
+Após a extração das métricas pela ferramenta CK, os relatórios gerados em formato de planilha serão utilizados como entrada para um 
+script desenvolvido em Python. Esse script será responsável por ler os arquivos de saída da ferramenta, selecionar as métricas definidas 
+nesta pesquisa e calcular as medidas estatísticas utilizadas na análise comparativa.
 
-A utilização de recursos computacionais para tratamento dos dados busca reduzir erros de processamento manual e garantir a 
-reprodutibilidade das análises realizadas.
+Para cada sistema e para cada métrica selecionada, serão calculadas medidas de estatística descritiva, incluindo média, mediana, 
+desvio padrão, valor mínimo e valor máximo. Essas medidas serão utilizadas para sumarizar a distribuição dos valores observados em 
+cada métrica. A média será considerada como uma medida geral de tendência central, enquanto a mediana será analisada em conjunto, 
+especialmente em distribuições que apresentem assimetria ou valores extremos. O desvio padrão será utilizado como indicador da 
+dispersão dos valores em torno da média, e os valores mínimo e máximo permitirão observar a amplitude dos resultados obtidos. 
+Essa escolha considera que dados de medição de software podem apresentar distribuições não normais, assimétricas e com valores 
+extremos, exigindo cautela na interpretação das medidas estatísticas \cite{fenton2015}.
 
-Por fim, será realizada a análise comparativa dos resultados, buscando identificar diferenças nos indicadores de acoplamento,
-coesão e complexidade estrutural entre os sistemas analisados. A interpretação dos resultados será conduzida com base nos conceitos
-de modularidade discutidos na fundamentação teórica, permitindo avaliar como os diferentes estilos arquiteturais se refletem nas
-métricas estruturais consideradas neste estudo.
+Além do cálculo das medidas descritivas, o script também será responsável pela geração de visualizações gráficas que auxiliem a 
+comparação entre os sistemas. Essas visualizações terão como objetivo representar a distribuição dos valores das métricas e facilitar 
+a identificação de diferenças, concentrações e possíveis valores extremos.
 
-A Figura \ref{fig:fluxo-metodologico} apresenta uma visão geral das etapas que compõem o procedimento experimental adotado nesta pesquisa.
+A utilização de um script para leitura, processamento e visualização dos dados busca reduzir intervenções manuais sobre as planilhas 
+geradas pela ferramenta CK, diminuindo a possibilidade de erros de manipulação e favorecendo a reprodutibilidade dos procedimentos 
+adotados. Não serão aplicados testes estatísticos inferenciais, pois o objetivo desta pesquisa é descrever e comparar os indicadores 
+estruturais observados nos dois sistemas analisados.
 
-\begin{figure}[htb]
-    \centering
-    \caption{Fluxo das etapas do procedimento experimental}
-    \includegraphics[width=0.9\textwidth]{figuras/fluxo-metodologico.png}
-    \label{fig:fluxo-metodologico}
-    
-    \vspace{0.1cm}
-    \footnotesize Fonte: Elaborado pelo autor (2026).
-\end{figure}
+\subsection{Análise dos Dados}
+\label{subsec:analise-dos-dados}
+
+A etapa final consiste na análise comparativa e na interpretação dos valores obtidos para os sistemas SISO e Roomie. 
+A comparação será realizada métrica por métrica, considerando as medidas descritivas calculadas e as visualizações 
+gráficas geradas pelo script em Python.
+
+A análise buscará identificar semelhanças e diferenças nos indicadores estruturais associados à modularidade, 
+observando a concentração dos dados, a variação entre as classes e a ocorrência de possíveis valores extremos. 
+As métricas CBO, Fan-In e Fan-Out serão consideradas na análise das dependências entre classes; a métrica LCOM* 
+será utilizada como indicador relacionado à coesão interna; e as métricas RFC e WMC serão consideradas na análise 
+da complexidade estrutural e do potencial de interação das classes.
+
+Os resultados serão interpretados à luz dos conceitos discutidos na fundamentação teórica, especialmente modularidade, 
+acoplamento, coesão e complexidade. Nesse sentido, será observado como a arquitetura em camadas adotada no SISO e a arquitetura 
+hexagonal adotada no Roomie se refletem nos indicadores estruturais extraídos.
+
+A comparação não tem como objetivo avaliar qual sistema é funcionalmente melhor ou mais eficiente em termos de desempenho. Os 
+valores obtidos serão interpretados como indicadores quantitativos relacionados à organização estrutural dos sistemas, e não 
+como medidas absolutas de qualidade arquitetural.
+
+A interpretação dos resultados considerará o escopo da pesquisa, uma vez que os sistemas analisados pertencem a domínios distintos 
+e foram desenvolvidos em contexto acadêmico. Dessa forma, os resultados serão discutidos como evidências observadas nos objetos de 
+estudo analisados, contribuindo para a compreensão de como diferentes estilos arquiteturais podem se refletir em métricas estruturais 
+de sistemas orientados a objetos.
 
 \section{Cronograma de Execução}
-\label{sec:cronograma-de-execucao}
+\label{sec:cronograma-execucao}
 
 Essa seção apresenta o cronograma de execução das atividades previstas para a realização do TCC II, conforme descrito na Tabela \ref{tab:cronograma}.
 
@@ -223,9 +241,9 @@ Extração das métricas com a ferramenta CK & & X & & & \\ \hline
 
 Desenvolvimento do script de análise & & X & X & & \\ \hline
 
-Tratamento dos dados e consolidação dos resultados & & & X & & \\ \hline
+Processamento dos dados & & & X & & \\ \hline
 
-Análise e interpretação dos resultados & & & X & X & \\ \hline
+Análise dos dados processados & & & X & X & \\ \hline
 
 Redação dos resultados e discussão & & & & X & \\ \hline
 
@@ -244,22 +262,3 @@ Entrega da versão final & & & & & X \\ \hline
 \centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
 
 \end{table}
-
-
-% GUARDAR PRA COLOCAR ISSO SÓ NOS RESULTADOS
-% \section{Ameaças à Validade}
-
-% Conforme discutido por \citeonline{wohlin2012}, estudos experimentais em Engenharia de Software estão sujeitos a diferentes ameaças à 
-% validade, as quais devem ser explicitamente reconhecidas.
-
-% A principal limitação desta pesquisa refere-se à utilização de apenas dois sistemas como objetos de estudo, o que restringe a possibilidade
-% de generalização dos resultados para outros contextos arquiteturais.
-
-% Outra ameaça está relacionada ao fato de ambos os sistemas terem sido desenvolvidos pelo próprio autor, podendo existir influências 
-% decorrentes de decisões de projeto específicas adotadas durante o desenvolvimento.
-
-% Além disso, os sistemas analisados pertencem a domínios distintos. Embora o foco da pesquisa esteja na organização estrutural do software, 
-% diferenças inerentes aos requisitos de cada sistema podem influenciar determinados indicadores estruturais.
-
-% Por fim, as métricas utilizadas representam aproximações quantitativas de atributos de qualidade e não são capazes de capturar integralmente 
-% todos os aspectos relacionados à modularidade de software.

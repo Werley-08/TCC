@@ -225,113 +225,256 @@ Assim, a complexidade estrutural complementa os conceitos de acoplamento e coes�
 considera as dependências entre classes e a coesão considera a organização interna de cada módulo, a complexidade contribui para compreender o esforço necessário 
 para analisar, modificar e evoluir os elementos estruturais do sistema.
 
-% \section{Métricas de Software}
-% \label{sec:metricas-de-software}
+\section{Métricas de Software}
+\label{sec:metricas-de-software}
 
-% A avaliação da qualidade de software envolve atributos frequentemente abstratos, como modularidade, manutenibilidade, complexidade e reutilização. Embora esses conceitos sejam amplamente discutidos na literatura, sua mensuração objetiva representa um desafio importante para pesquisadores e profissionais da Engenharia de Software. Nesse contexto, métricas de software surgem como instrumentos capazes de transformar características qualitativas em indicadores quantitativos observáveis.
+A mensuração é uma atividade importante para analisar características de sistemas de software de forma objetiva. 
+Segundo \citeonline{fenton2015}, medição é o processo pelo qual números ou símbolos são atribuídos a atributos de 
+entidades do mundo real, de acordo com regras claramente definidas. Dessa forma, o processo de medição não avalia uma 
+entidade de maneira genérica, mas atributos específicos que se deseja observar.
 
-% Segundo \citeonline{fenton2015}, uma métrica de software consiste em uma medida utilizada para quantificar atributos relacionados a produtos, processos ou recursos de software. A utilização de métricas permite que propriedades normalmente avaliadas de maneira subjetiva sejam analisadas por meio de dados objetivos, favorecendo a comparação entre sistemas e apoiando a tomada de decisões durante o desenvolvimento e manutenção de software.
+No contexto da Engenharia de Software, métricas permitem representar quantitativamente características de sistemas, componentes 
+ou processos. De acordo com \citeonline{sommerville2011}, uma métrica de software corresponde a uma característica de um sistema 
+de software, de sua documentação ou de seu processo de desenvolvimento que pode ser medida objetivamente. Entre essas características, 
+podem ser observados aspectos relacionados ao tamanho, à complexidade, à ocorrência de falhas ou ao esforço necessário para 
+desenvolver componentes.
 
-% De acordo com \citeonline{sommerville2019}, a medição desempenha papel fundamental na Engenharia de Software por possibilitar a compreensão do comportamento de sistemas complexos. A coleta sistemática de dados permite identificar tendências, avaliar atributos de qualidade e fornecer evidências quantitativas sobre características estruturais do software.
+As medições de um sistema de software podem ser utilizadas para apoiar a análise de atributos de qualidade. Segundo 
+\citeonline{sommerville2011}, características de componentes podem ser medidas e utilizadas para avaliar atributos mais gerais 
+do sistema. Nesta pesquisa, esse princípio é aplicado à análise de características estruturais de classes, como dependências, coesão 
+e complexidade, permitindo observar diferenças na organização interna dos sistemas estudados.
 
-% As métricas podem ser classificadas de diferentes formas. Uma distinção amplamente adotada na literatura é aquela entre métricas externas e métricas internas. Conforme explicam \citeonline{fenton2015}, métricas externas estão relacionadas ao comportamento do sistema em execução e à percepção de qualidade pelos usuários, enquanto métricas internas são obtidas diretamente a partir dos artefatos de software, como código-fonte, modelos e documentação.
+Embora forneçam valores objetivos sobre características observáveis do software, métricas não devem ser interpretadas isoladamente 
+como medidas absolutas de qualidade. \citeonline{fenton2015} destacam que toda ação de medição deve estar associada a um objetivo 
+ou necessidade claramente definida. Assim, os valores obtidos por métricas precisam ser analisados de acordo com o contexto do 
+sistema e com o propósito da avaliação.
 
-% No contexto desta pesquisa, o interesse concentra-se nas métricas internas, uma vez que o objetivo consiste em analisar características estruturais associadas à modularidade de sistemas orientados a objetos. Esse tipo de métrica pode ser obtido por meio de análise estática do código-fonte, permitindo avaliar atributos relacionados ao acoplamento, à coesão e à complexidade sem a necessidade de executar a aplicação.
+No contexto deste trabalho, as métricas de software são utilizadas como indicadores quantitativos para apoiar a análise da modularidade 
+e da qualidade estrutural dos sistemas estudados. Como o foco está em sistemas orientados a objetos, interessam especialmente métricas 
+extraídas do código-fonte, capazes de fornecer indicadores sobre características estruturais relacionadas a classes, dependências, coesão 
+e complexidade. Essas métricas são discutidas na seção seguinte.
 
-% A utilização de métricas estruturais também é amplamente observada em estudos empíricos de Engenharia de Software. Conforme discutido nos trabalhos relacionados apresentados anteriormente, métricas orientadas a objetos têm sido empregadas para investigar atributos de qualidade arquitetural, avaliar modularidade e comparar diferentes estratégias de organização de sistemas \cite{ferreira2006,lazzari2022,tsuruta2010}.
+\section{Métricas Estruturais em Sistemas Orientados a Objetos}
+\label{sec:metricas-estruturais-em-sistemas-orientados-a-objetos}
 
-% Entretanto, a simples coleta de métricas não garante uma avaliação adequada da qualidade do software. Segundo \citeonline{fenton2015}, a interpretação dos resultados deve estar fundamentada em modelos conceituais que relacionem os valores observados aos atributos que se deseja analisar. Dessa forma, métricas estruturais tornam-se especialmente relevantes quando utilizadas em conjunto com conceitos como acoplamento, coesão e modularidade.
+Em sistemas orientados a objetos, a estrutura do software é organizada principalmente a partir de classes, objetos, métodos, interfaces 
+e relações entre esses elementos. \citeonline{fenton2015} destacam que projetos e implementações orientados a objetos são construídos 
+com base em classes, que definem conjuntos de objetos instanciáveis e agrupam métodos relacionados ao comportamento desses objetos. 
+Além disso, linguagens orientadas a objetos podem incluir mecanismos como interfaces, herança e ligação dinâmica, que aumentam a 
+expressividade dos desenvolvedores, mas também podem tornar projetos e implementações mais complexos.
 
-% Entre as diversas abordagens propostas para avaliação de sistemas orientados a objetos, destacam-se as métricas estruturais baseadas em classes e relacionamentos entre componentes. Essas métricas buscam quantificar aspectos relacionados à organização interna do software e constituem uma das formas mais utilizadas para investigação da qualidade estrutural de aplicações orientadas a objetos.
+Essa forma de organização torna necessária a utilização de métricas capazes de representar características próprias do paradigma 
+orientado a objetos. \citeonline{chidamber1994} argumentam que métricas desenvolvidas para abordagens tradicionais de desenvolvimento 
+não se ajustam diretamente a conceitos como classes, herança, encapsulamento e troca de mensagens. Por esse motivo, os autores 
+propõem um conjunto de métricas voltado especificamente à avaliação de projetos orientados a objetos.
 
-% \section{Métricas Estruturais em OO}
-% \label{sec:metricas-estruturais-em-oo}
+A classe ocupa papel central nesse tipo de avaliação. De acordo com \citeonline{pressman2010}, a classe é uma unidade fundamental 
+em sistemas orientados a objetos, pois encapsula dados e operações, pode participar de hierarquias de herança e colabora com 
+outras classes para realizar as funcionalidades do sistema. Dessa forma, métricas aplicadas no nível de classe podem fornecer 
+informações relevantes sobre características estruturais do software, como acoplamento, coesão, complexidade e comunicação 
+entre componentes.
 
-% O paradigma orientado a objetos introduziu novos mecanismos para organização de software, como encapsulamento, herança, abstração e polimorfismo. Embora esses conceitos contribuam para a construção de sistemas mais flexíveis e reutilizáveis, também tornam mais complexa a avaliação objetiva da qualidade estrutural do software. Em razão disso, diversas métricas específicas para sistemas orientados a objetos foram propostas com o objetivo de quantificar características relacionadas ao projeto e à implementação das aplicações.
+De forma semelhante, \citeonline{chidamber1994} afirmam que o projeto de classes é central no paradigma orientado a objetos, 
+razão pela qual as métricas propostas pelos autores foram definidas para capturar aspectos estruturais relacionados às classes 
+e às relações estabelecidas entre elas. Essas métricas são consideradas estáticas, pois podem ser coletadas a partir da estrutura 
+do projeto ou da implementação, sem a necessidade de executar o sistema.
 
-% Segundo \citeonline{chidamber1994}, métricas orientadas a objetos devem ser capazes de capturar propriedades estruturais relevantes das classes e dos relacionamentos estabelecidos entre elas. Essas métricas permitem avaliar atributos associados à qualidade interna do software, fornecendo indicadores quantitativos sobre aspectos como acoplamento, coesão, reutilização e complexidade.
+A suíte CK, proposta por Chidamber e Kemerer, é composta por seis métricas orientadas a classes: \textit{Weighted Methods per Class} 
+(WMC), \textit{Depth of Inheritance Tree} (DIT), \textit{Number of Children} (NOC), \textit{Coupling Between Object Classes} (CBO), 
+\textit{Response For a Class} (RFC) e \textit{Lack of Cohesion in Methods} (LCOM) \cite{chidamber1994}. Essas métricas abordam 
+diferentes dimensões do projeto orientado a objetos, incluindo complexidade interna da classe, uso de herança, dependências 
+entre classes, conjunto de respostas possíveis e coesão entre métodos.
 
-% Entre as propostas existentes na literatura, destaca-se o conjunto de métricas desenvolvido por \citeonline{chidamber1994}, amplamente conhecido como suíte CK. Esse conjunto tornou-se uma das abordagens mais utilizadas em estudos empíricos de Engenharia de Software devido à sua fundamentação teórica e à sua capacidade de representar diferentes características estruturais de sistemas orientados a objetos.
+Além das métricas da suíte CK, medidas relacionadas ao fluxo de dependências entre componentes também são utilizadas para analisar 
+a estrutura de sistemas de software. Nesse contexto, Fan-In e Fan-Out são discutidas na literatura como medidas associadas, 
+respectivamente, à quantidade de elementos que dependem de um componente e à quantidade de elementos dos quais um componente 
+depende \cite{yourdon1978,sommerville2011}. Essas métricas complementam a análise de acoplamento ao permitir observar a direção 
+e a concentração das dependências no sistema.
 
-% Conforme observam \citeonline{ferreira2006}, métricas orientadas a objetos podem ser empregadas para avaliar propriedades relacionadas à modularidade, auxiliando na identificação de estruturas excessivamente acopladas, componentes com baixa coesão e elementos potencialmente mais difíceis de manter. De forma semelhante, trabalhos recentes continuam utilizando métricas estruturais como instrumento para investigação da qualidade arquitetural e da organização interna de sistemas de software \cite{lazzari2022,tsuruta2010}.
+No contexto desta pesquisa, o interesse recai sobre métricas relacionadas à modularidade e à qualidade estrutural dos sistemas 
+estudados. Por esse motivo, são consideradas métricas associadas principalmente ao acoplamento, à coesão e à complexidade 
+estrutural das classes. As subseções seguintes apresentam as métricas utilizadas no estudo, incluindo CBO, LCOM, RFC, WMC, 
+Fan-In e Fan-Out, discutindo sua relação com os atributos estruturais analisados.
 
-% No contexto desta pesquisa, a análise será realizada em nível de classe, uma vez que as métricas selecionadas foram originalmente concebidas para esse nível de granularidade e são amplamente utilizadas para avaliação de sistemas orientados a objetos. A escolha dessa abordagem também está alinhada ao objetivo do estudo, que consiste em investigar como diferentes estilos arquiteturais influenciam atributos estruturais relacionados à modularidade.
+É importante destacar que algumas métricas orientadas a objetos podem apresentar variações de definição e implementação na 
+literatura e em ferramentas de análise estática. A própria definição da WMC, por exemplo, considera a soma das complexidades 
+dos métodos de uma classe, mas \citeonline{chidamber1994} indicam que a forma específica de medir essa complexidade pode 
+depender da implementação adotada. Assim, neste capítulo as métricas são apresentadas em seu significado conceitual e em 
+sua relação com os atributos analisados, enquanto a forma específica de operacionalização adotada pela ferramenta utilizada 
+nesta pesquisa é descrita na Metodologia.
 
-% As métricas consideradas nesta pesquisa abrangem diferentes perspectivas da estrutura do software. Algumas concentram-se na avaliação das dependências existentes entre classes, enquanto outras buscam mensurar aspectos relacionados à coesão interna e à complexidade dos componentes. Em conjunto, esses indicadores fornecem uma visão quantitativa da organização estrutural dos sistemas analisados.
+\subsection{\textit{Coupling Between Object Classes} (CBO)}
+\label{sec:cbo}
 
-% Nas subseções seguintes são apresentadas as métricas utilizadas neste trabalho, bem como os conceitos teóricos que fundamentam sua aplicação na avaliação da modularidade de sistemas orientados a objetos.
+A métrica \textit{Coupling Between Object Classes} (CBO) tem como objetivo representar o grau 
+de acoplamento existente entre uma classe e as demais classes do sistema. Segundo \citeonline{chidamber1994}, o CBO de uma classe 
+corresponde ao número de outras classes às quais ela está acoplada. Essa relação ocorre quando métodos de uma classe utilizam métodos 
+ou variáveis de instância definidos em outra classe.
 
-% \subsection{CBO}
-% \label{sec:cbo}
+Em sistemas orientados a objetos, valores elevados de CBO indicam maior dependência entre classes. De acordo com 
+\citeonline{sommerville2011}, classes são consideradas acopladas quando métodos de uma classe utilizam métodos ou 
+variáveis definidos em outra. Assim, quanto maior o valor de CBO, maior tende a ser a dependência da classe em relação 
+a outros elementos do sistema, aumentando a possibilidade de que alterações em uma classe produzam impactos em outras partes 
+do programa.
 
-% A métrica \textit{Coupling Between Objects} (CBO) foi proposta por \citeonline{chidamber1994} com o objetivo de mensurar o grau de acoplamento existente entre uma classe e as demais classes do sistema. Em termos gerais, a métrica contabiliza a quantidade de classes com as quais uma determinada classe mantém algum tipo de dependência estrutural.
+A interpretação dessa métrica também está associada à modularidade e à reutilização. \citeonline{pressman2010} observa que, 
+à medida que o valor de CBO aumenta, a reutilização de uma classe tende a diminuir, pois a classe passa a depender de um número 
+maior de colaborações externas. Além disso, altos valores de CBO podem dificultar modificações e testes, uma vez que mudanças 
+em classes acopladas podem exigir maior atenção aos efeitos propagados pelo sistema.
 
-% Segundo \citeonline{chidamber1994}, duas classes são consideradas acopladas quando métodos ou atributos de uma delas utilizam elementos definidos pela outra. Essas dependências podem ocorrer por meio de chamadas de métodos, acesso a atributos, parâmetros, tipos de retorno ou associações estabelecidas durante a implementação do software.
+Apesar de sua relevância, o CBO deve ser interpretado com cautela. \citeonline{fenton2015} destacam que a métrica contabiliza o 
+número de classes às quais uma classe está acoplada, e não necessariamente o número total de conexões existentes entre elas. 
+Dessa forma, duas classes podem apresentar o mesmo valor de CBO mesmo que possuam intensidades diferentes de interação. Assim, 
+o CBO deve ser compreendido como um indicador do alcance do acoplamento de uma classe, e não como uma medida completa de todas 
+as dependências internas existentes no sistema.
 
-% O acoplamento constitui um dos principais atributos relacionados à modularidade de sistemas orientados a objetos. Conforme discutido anteriormente, classes excessivamente dependentes de outros componentes tendem a apresentar maior sensibilidade a mudanças, uma vez que modificações realizadas em uma classe podem propagar efeitos para diversas partes da aplicação \cite{pressman2010,sommerville2019}.
+Neste trabalho, o CBO será interpretado como um indicador do acoplamento estrutural das classes, permitindo observar quais partes
+dos sistemas concentram maior número de dependências com outros elementos do código. Dessa forma, o CBO contribui para investigar 
+como a arquitetura em camadas e a arquitetura hexagonal se refletem nas dependências estruturais observadas no código-fonte.
 
-% Nesse contexto, a métrica CBO fornece um indicador quantitativo da quantidade de relacionamentos externos mantidos por uma classe. Valores elevados de CBO sugerem maior dependência em relação a outros componentes do sistema, o que pode dificultar atividades de manutenção, teste e evolução do software. Por outro lado, valores menores tendem a indicar estruturas mais independentes e potencialmente mais modulares.
+\subsection{\textit{Lack of Cohesion in Methods} (LCOM)}
+\label{sec:lcom}
 
-% Entretanto, \citeonline{chidamber1994} ressaltam que a existência de acoplamento não deve ser interpretada necessariamente como um problema. Em sistemas orientados a objetos, determinadas dependências são naturais e frequentemente necessárias para implementação das funcionalidades do software. Assim, a interpretação da métrica deve considerar o contexto arquitetural e os objetivos do sistema analisado.
+A métrica \textit{Lack of Cohesion in Methods} (LCOM) indica a falta de coesão interna de uma classe. 
+Diferentemente de métricas que avaliam dependências entre classes, a LCOM concentra-se na relação entre os 
+métodos de uma classe e os atributos ou variáveis de instância utilizados por esses métodos.
 
-% Devido à sua relação direta com o conceito de acoplamento, a métrica CBO é amplamente utilizada em estudos que investigam modularidade e qualidade estrutural de software. Nesta pesquisa, seus valores serão utilizados para analisar como diferentes estilos arquiteturais influenciam a quantidade de dependências estabelecidas entre classes.
+Segundo \citeonline{fenton2015}, a coesão de uma classe pode ser caracterizada pelo grau de relacionamento entre seus métodos locais 
+e suas variáveis de instância. Nesse sentido, métodos que acessam ou modificam atributos em comum tendem a indicar maior proximidade 
+funcional dentro da classe. Por outro lado, quando os métodos utilizam conjuntos distintos de atributos, a classe pode apresentar 
+menor coesão interna.
 
-% \subsection{LCOM}
-% \label{sec:lcom}
+A LCOM é considerada uma métrica inversa de coesão, pois valores mais altos indicam menor coesão entre os métodos da classe 
+\cite{fenton2015}. Essa interpretação também é discutida por \citeonline{pressman2010}, ao destacar que valores elevados de 
+LCOM podem indicar maior complexidade no projeto da classe. De modo geral, busca-se manter a coesão elevada, o que corresponde 
+a valores mais baixos para métricas de falta de coesão.
 
-% A métrica \textit{Lack of Cohesion in Methods} (LCOM) foi proposta por \citeonline{chidamber1994} com o objetivo de avaliar o grau de coesão existente em uma classe. Seu princípio fundamental consiste em analisar o relacionamento entre métodos e atributos, verificando até que ponto os métodos da classe compartilham os mesmos dados e contribuem para uma responsabilidade comum.
+Entretanto, a definição e a utilidade da LCOM devem ser interpretadas com cautela. \citeonline{sommerville2011} observa que essa 
+métrica existe em diferentes variações e que seu valor tem sido objeto de debate na literatura. De forma semelhante, 
+\citeonline{fenton2015} destacam limitações associadas à formulação original da métrica, especialmente por não ser normalizada. 
+Assim, a LCOM deve ser compreendida como um indicador relacionado à coesão interna da classe, e não como uma medida absoluta da 
+qualidade de seu projeto.
 
-% Segundo \citeonline{chidamber1994}, classes bem projetadas tendem a apresentar métodos fortemente relacionados entre si, utilizando um conjunto comum de atributos para implementar funcionalidades associadas a um mesmo propósito. Quando os métodos operam sobre conjuntos distintos de atributos ou apresentam pouca relação funcional, a coesão da classe diminui.
+Nesse trabalho, a LCOM é considerada como uma métrica relacionada à coesão interna das classes. A forma específica de 
+operacionalização adotada neste trabalho é apresentada na Metodologia, juntamente com as demais métricas utilizadas na análise 
+estrutural dos sistemas.
 
-% A coesão é considerada um atributo desejável em sistemas orientados a objetos, pois está associada à clareza das responsabilidades e à facilidade de manutenção do software. Conforme destacam \citeonline{pressman2010}, componentes altamente coesos são mais compreensíveis, mais simples de modificar e menos suscetíveis à introdução de defeitos durante a evolução do sistema.
+\subsection{\textit{Response For a Class} (RFC)}
+\label{sec:rfc}
 
-% Nesse contexto, a métrica LCOM fornece uma estimativa quantitativa da dispersão das responsabilidades existentes em uma classe. Valores elevados indicam menor coesão, sugerindo que os métodos possuem pouca interação entre si ou que a classe concentra responsabilidades excessivamente distintas. Em contrapartida, valores reduzidos tendem a indicar maior integração entre os elementos internos da classe e melhor definição de propósito.
+A métrica \textit{Response For a Class} (RFC) representa o tamanho do conjunto de respostas possíveis de uma classe. De acordo com 
+\citeonline{chidamber1994}, o conjunto de respostas de uma classe corresponde ao conjunto de métodos que podem ser potencialmente 
+executados em resposta a uma mensagem recebida por um objeto dessa classe.
 
-% De acordo com \citeonline{sommerville2019}, classes que acumulam múltiplas responsabilidades frequentemente apresentam maior dificuldade de manutenção e menor capacidade de reutilização. Assim, a análise da coesão constitui um aspecto relevante para avaliação da modularidade estrutural de sistemas orientados a objetos.
+Esse conjunto inclui tanto os métodos definidos na própria classe quanto os métodos externos que podem ser invocados por seus
+métodos locais. Nesse sentido, \citeonline{fenton2015} descrevem a RFC como a soma entre o número de métodos locais e o número 
+de métodos externos chamados por esses métodos. Dessa forma, a métrica permite observar não apenas a quantidade de operações 
+diretamente disponíveis em uma classe, mas também o potencial de interação dessa classe com outros elementos do sistema.
 
-% Embora a métrica LCOM represente uma aproximação da coesão, ela é amplamente utilizada na literatura como indicador da qualidade interna de classes e da distribuição de responsabilidades em sistemas orientados a objetos. Nesta pesquisa, seus valores serão empregados para investigar como diferentes estilos arquiteturais influenciam a organização interna das classes e o grau de coesão presente nos sistemas analisados.
+Valores elevados de RFC indicam que uma classe possui um conjunto maior de comportamentos potencialmente executáveis em resposta 
+a uma chamada. \citeonline{pressman2010} observa que, à medida que a RFC aumenta, também tende a aumentar o esforço necessário 
+para testar a classe, pois cresce o número de métodos que podem participar das sequências de execução. De forma semelhante, 
+\citeonline{sommerville2011} relaciona valores mais altos de RFC a maior complexidade da classe, uma vez que mais métodos 
+podem ser acionados a partir de uma mensagem recebida.
 
-% \subsection{RFC}
-% \label{sec:rfc}
+Apesar de sua utilidade, a RFC deve ser interpretada como um indicador do tamanho do conjunto de respostas de uma classe, e 
+não como uma representação completa de seu comportamento em tempo de execução. Conforme discutido por \citeonline{fenton2015}, 
+a métrica contabiliza os métodos presentes no conjunto de respostas, mas não necessariamente o número total de chamadas 
+realizadas ou a frequência com que essas chamadas ocorrem. Assim, classes com valores semelhantes de RFC podem apresentar 
+diferentes intensidades de interação interna ou externa.
 
-% A métrica \textit{Response For a Class} (RFC) foi proposta por \citeonline{chidamber1994} para estimar a quantidade potencial de métodos que podem ser executados em resposta a uma mensagem recebida por uma classe. Em outras palavras, a métrica considera não apenas os métodos definidos na própria classe, mas também os métodos externos que podem ser invocados durante a execução de suas operações.
+No contexto desta pesquisa, a RFC é utilizada como indicador relacionado à complexidade estrutural e ao potencial de interação 
+das classes. A análise dessa métrica permite observar se os estilos arquiteturais estudados estão associados a classes com 
+maior ou menor conjunto de respostas possíveis, contribuindo para a comparação da organização estrutural dos sistemas analisados.
 
-% Segundo \citeonline{chidamber1994}, o conjunto de resposta de uma classe corresponde ao total de métodos potencialmente executáveis a partir da chamada de seus métodos públicos. Dessa forma, a RFC busca representar a complexidade comportamental associada ao uso da classe e às interações que ela estabelece com outros componentes do sistema.
+\subsection{\textit{Weighted Methods per Class} (WMC)}
+\label{sec:wmc}
 
-% Classes com valores elevados de RFC tendem a apresentar maior quantidade de comportamentos acessíveis e maior número de interações durante sua execução. Como consequência, a compreensão dessas classes pode demandar maior esforço por parte dos desenvolvedores, uma vez que seu funcionamento depende de um conjunto mais amplo de métodos e fluxos de execução.
+A métrica \textit{Weighted Methods per Class} (WMC) está relacionada à quantidade e à complexidade dos métodos definidos em uma 
+classe. Segundo \citeonline{chidamber1994}, a WMC é calculada a partir da soma dos pesos atribuídos aos métodos de uma classe, 
+em que cada peso representa um fator de complexidade associado ao respectivo método.
 
-% De acordo com \citeonline{pressman2010}, o aumento da complexidade de um componente pode impactar negativamente atividades de manutenção e teste. Quanto maior o número de comportamentos possíveis associados a uma classe, mais difícil tende a ser a identificação dos efeitos produzidos por modificações realizadas em sua implementação.
+A interpretação da WMC depende da forma como os pesos dos métodos são definidos. \citeonline{fenton2015} destacam que, quando 
+todos os métodos recebem peso igual a 1, a WMC passa a representar uma medida de tamanho da classe, correspondendo ao número 
+de métodos nela definidos. Dessa forma, a métrica pode ser compreendida tanto como uma medida de complexidade quanto como uma 
+medida de tamanho, dependendo da estratégia adotada para atribuição dos pesos.
 
-% Além disso, \citeonline{sommerville2019} observam que componentes excessivamente complexos podem dificultar a evolução do software ao longo do tempo, especialmente em sistemas de grande porte. Nesse contexto, métricas que quantificam aspectos relacionados à complexidade estrutural e comportamental tornam-se importantes instrumentos para avaliação da qualidade interna do software.
+De acordo com \citeonline{pressman2010}, o número de métodos e a complexidade desses métodos são indicadores razoáveis do 
+esforço necessário para implementar e testar uma classe. O autor também observa que, à medida que o número de métodos cresce, 
+a classe tende a se tornar mais específica da aplicação, o que pode limitar seu potencial de reutilização. Assim, valores 
+elevados de WMC podem indicar classes com maior responsabilidade interna e maior esforço de compreensão.
 
-% Embora a RFC não represente diretamente o acoplamento ou a coesão de uma classe, seus valores podem fornecer indícios relevantes sobre a complexidade associada à sua utilização e manutenção. Nesta pesquisa, a métrica será empregada como um indicador complementar para análise da modularidade estrutural dos sistemas estudados, permitindo observar possíveis diferenças na complexidade comportamental decorrentes dos estilos arquiteturais adotados.
+Semelhantemente, \citeonline{sommerville2011} relaciona valores mais altos de WMC a classes mais complexas e potencialmente 
+mais difíceis de compreender. Classes com muitos métodos ou métodos mais complexos podem concentrar diferentes responsabilidades, 
+o que pode afetar sua coesão lógica e dificultar sua reutilização em hierarquias de herança ou em outros contextos do sistema.
 
-% \subsection{WMC}
-% \label{sec:wmc}
+No âmbito desta pesquisa, a WMC é utilizada como indicador relacionado à complexidade estrutural das classes. A análise dessa 
+métrica permite observar se os sistemas estudados apresentam classes com maior concentração de comportamento ou maior complexidade
+interna, contribuindo para a comparação entre a organização estrutural da arquitetura em camadas e da arquitetura hexagonal.
 
-% A métrica \textit{Weighted Methods per Class} (WMC) foi proposta por \citeonline{chidamber1994} com o objetivo de mensurar a complexidade associada a uma classe por meio da quantidade e das características dos métodos que ela implementa. Em sua formulação original, a métrica corresponde à soma dos pesos atribuídos aos métodos da classe, sendo esses pesos geralmente relacionados à complexidade de cada método.
+\subsection{\textit{Fan-In}}
+\label{sec:fan-in}
 
-% Segundo \citeonline{chidamber1994}, classes que possuem grande quantidade de métodos tendem a concentrar mais funcionalidades e comportamentos, aumentando o esforço necessário para sua compreensão, manutenção e teste. Dessa forma, a WMC pode ser utilizada como um indicador da complexidade estrutural associada à implementação de uma classe.
+A métrica \textit{Fan-In} está ligada à quantidade de elementos que direcionam dependências, chamadas ou fluxos para um
+determinado módulo, função, método ou componente. Em termos gerais, ela representa o número de partes do sistema que utilizam 
+ou dependem de um elemento analisado, permitindo observar o grau de entrada de dependências sobre esse elemento.
 
-% De acordo com \citeonline{pressman2010}, o aumento da complexidade interna dos componentes de software está frequentemente relacionado à redução da manutenibilidade e ao aumento da probabilidade de defeitos. Componentes excessivamente complexos podem demandar maior esforço para implementação de modificações e dificultar a identificação dos impactos decorrentes de alterações realizadas ao longo do ciclo de vida do sistema.
+Segundo \citeonline{fenton2015}, o \textit{fan-in} de um módulo pode ser compreendido como a quantidade de fluxos locais que 
+terminam nesse módulo, juntamente com as estruturas de dados das quais ele recupera informações. Embora essa definição esteja 
+associada a uma visão modular mais geral, ela evidencia a ideia central da métrica: identificar quantos fluxos ou dependências 
+chegam a uma unidade do sistema.
 
-% Além disso, \citeonline{sommerville2019} observam que classes responsáveis por múltiplas funcionalidades tendem a apresentar menor modularidade e maior dificuldade de evolução. Embora a quantidade de métodos não represente, isoladamente, um indicador definitivo de qualidade, valores elevados podem sugerir concentração excessiva de responsabilidades em determinados componentes.
+De forma semelhante, \citeonline{sommerville2011} define \textit{fan-in} como uma medida do número de funções ou métodos que 
+chamam uma determinada função ou método. Nesse sentido, valores elevados de \textit{fan-in} indicam que o elemento analisado 
+é utilizado por várias partes do sistema, podendo representar uma unidade central na estrutura do software. Entretanto, essa 
+centralidade também implica maior atenção, pois alterações nesse elemento podem produzir efeitos em diferentes partes do sistema 
+que dependem dele.
 
-% Na ferramenta CK utilizada nesta pesquisa, a métrica WMC é calculada com base na quantidade de métodos definidos em cada classe. Assim, seus valores representam uma estimativa da complexidade estrutural dos componentes analisados, permitindo identificar possíveis diferenças na distribuição de responsabilidades entre os sistemas estudados.
+A interpretação do \textit{Fan-In} não deve ser feita apenas de forma negativa. \citeonline{yourdon1978} observa que, em determinados 
+contextos, aumentar o \textit{fan-in} pode ser desejável, pois indica que funcionalidades comuns estão sendo reutilizadas em vez de 
+duplicadas em diferentes partes do sistema. Nesse sentido, o \textit{Fan-In} pode estar associado à modularidade quando representa o 
+reaproveitamento adequado de responsabilidades bem definidas.
 
-% Por esse motivo, a métrica será utilizada como um indicador complementar para avaliação da modularidade estrutural, fornecendo evidências sobre como os diferentes estilos arquiteturais influenciam a organização e a complexidade das classes implementadas.
+Porém, \citeonline{yourdon1978} também ressalta que o aumento do \textit{fan-in} não deve ocorrer a qualquer custo. Agrupar 
+funcionalidades não relacionadas em um único módulo apenas para aumentar seu uso pode comprometer a coesão e gerar componentes 
+excessivamente genéricos ou difíceis de manter. Assim, valores elevados de \textit{Fan-In} devem ser analisados em conjunto com 
+outras métricas, especialmente aquelas relacionadas à coesão e ao acoplamento.
 
-% \subsection{Fan-in e Fan-out}
-% \label{sec:fan-in-e-fan-out}
+Nesse sentido, o \textit{Fan-In} é utilizado como indicador da quantidade de dependências que chegam a uma classe. 
+A análise dessa métrica permite identificar classes mais centrais ou mais reutilizadas dentro da estrutura dos sistemas estudados. 
+Dessa forma, o \textit{Fan-In} contribui para compreender como as dependências se distribuem nas arquiteturas analisadas e quais 
+classes concentram maior número de relações de entrada.
 
-% As métricas Fan-In e Fan-Out são utilizadas para analisar as dependências existentes entre componentes de um sistema de software. Diferentemente da métrica CBO, que contabiliza a quantidade total de classes relacionadas a uma determinada classe, essas métricas procuram identificar a direção das dependências estabelecidas, fornecendo uma visão complementar da estrutura do sistema.
+\subsection{\textit{Fan-Out}}
+\label{sec:fan-out}
 
-% Segundo \citeonline{marinescu2006}, o Fan-In representa a quantidade de componentes que dependem de uma determinada classe. Em sistemas orientados a objetos, essa métrica pode ser interpretada como um indicador do grau de utilização ou reutilização de um componente dentro da aplicação. Classes com valores elevados de Fan-In tendem a ocupar posições centrais na estrutura do software, sendo utilizadas por diversos outros componentes.
+A métrica \textit{Fan-Out} relaciona-se à quantidade de dependências, chamadas ou fluxos que saem de um determinado 
+módulo, função, método ou componente. Enquanto o \textit{Fan-In} observa quantos elementos utilizam uma unidade do sistema, 
+o \textit{Fan-Out} considera quantos elementos são utilizados por essa unidade. Dessa forma, a métrica permite analisar o 
+grau em que um elemento depende de outros para executar suas responsabilidades.
 
-% Por outro lado, o Fan-Out corresponde à quantidade de componentes dos quais uma determinada classe depende para executar suas responsabilidades \cite{marinescu2006}. Dessa forma, a métrica fornece uma estimativa do grau de dependência externa associado a uma classe. Valores elevados podem indicar maior acoplamento estrutural e maior sensibilidade a alterações realizadas em componentes relacionados.
+Segundo \citeonline{fenton2015}, o \textit{fan-out} de um módulo corresponde ao número de fluxos locais que partem desse 
+módulo, juntamente com as estruturas de dados que são atualizadas por ele. Essa definição, embora apresentada em um contexto 
+modular mais geral, evidencia a ideia central da métrica: identificar a quantidade de relações de saída estabelecidas por 
+uma unidade do sistema.
 
-% A análise conjunta dessas métricas permite compreender não apenas a existência de dependências, mas também a forma como elas se distribuem no sistema. Uma classe pode apresentar elevado Fan-In e baixo Fan-Out, caracterizando um componente amplamente reutilizado e relativamente independente. Em contrapartida, valores reduzidos de Fan-In combinados com elevado Fan-Out podem indicar componentes fortemente dependentes de outros elementos da aplicação.
+De forma semelhante, \citeonline{sommerville2011} define \textit{fan-out} como o número de funções chamadas por uma determinada 
+função. Para o autor, valores elevados dessa métrica podem indicar maior complexidade, pois o elemento analisado precisa coordenar 
+um número maior de componentes chamados. Assim, quanto maior o \textit{Fan-Out}, maior pode ser a complexidade da lógica necessária 
+para controlar ou organizar essas interações.
 
-% De acordo com \citeonline{fenton2015}, métricas relacionadas às dependências estruturais são particularmente úteis para investigação da modularidade de sistemas de software, uma vez que permitem identificar pontos de concentração de responsabilidades e potenciais fontes de propagação de mudanças. Nesse contexto, Fan-In e Fan-Out fornecem informações complementares às métricas tradicionais de acoplamento.
+A relação entre \textit{Fan-Out} e complexidade também é discutida por \citeonline{yourdon1978}, que associa essa métrica ao 
+conceito de amplitude de controle de um módulo. Nessa perspectiva, o \textit{Fan-Out} representa o número de subordinados 
+imediatos de um módulo. Valores muito elevados podem indicar que um módulo foi decomposto de maneira inadequada ou que há 
+ausência de níveis intermediários na estrutura do sistema, fazendo com que uma unidade concentre muitas relações diretas 
+com outras partes.
 
-% Nesta pesquisa, ambas as métricas serão utilizadas para analisar a distribuição das dependências entre as classes dos sistemas estudados. Em conjunto com a métrica CBO, esses indicadores contribuirão para a avaliação quantitativa do acoplamento estrutural associado aos diferentes estilos arquiteturais investigados.
+No entanto, valores de \textit{Fan-Out} devem ser interpretados de acordo com o contexto. Um valor mais alto pode ser justificado 
+quando uma classe ou módulo possui uma responsabilidade legítima de coordenação. Por outro lado, quando esse valor indica dependência 
+excessiva de muitos elementos distintos, pode sugerir maior acoplamento, maior complexidade de manutenção e maior dificuldade de 
+compreensão da estrutura interna do sistema.
+
+Dessa forma, o \textit{Fan-Out} é utilizado como indicador da quantidade de dependências que partem de uma classe. 
+A análise dessa métrica permite observar quais classes dependem de maior número de elementos externos para cumprir suas 
+responsabilidades. Assim, o \textit{Fan-Out} contribui para compreender a distribuição das dependências de saída nos sistemas 
+estudados e complementa a análise realizada por meio das métricas CBO, RFC e Fan-In.
