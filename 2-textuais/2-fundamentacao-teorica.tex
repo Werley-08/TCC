@@ -57,7 +57,7 @@ os serviços da camada imediatamente inferior, mantendo uma relação de depend�
 \end{figure}
 
 Na prática, existem variações desse padrão. Embora a estrutura estrita permita apenas o uso da camada imediatamente inferior,
-\citeonline{bass2012} observa que alguns sistemas permitem o acesso a camadas inferiores não adjacentes, situação conhecida
+\citeonline{bass2012} observam que alguns sistemas permitem o acesso a camadas inferiores não adjacentes, situação conhecida
 como \textit{layer bridging}. Entretanto, a ocorrência frequente desse tipo de acesso pode comprometer benefícios associados
 ao padrão, como modificabilidade e portabilidade, pois aumenta o acoplamento entre partes que deveriam permanecer separadas.
 
@@ -212,7 +212,7 @@ Segundo \citeonline{pressman2010}, existem diferentes formas de compreender a co
 a complexidade pode ser analisada a partir de características estruturais, especialmente pela forma como as classes se relacionam entre si. Dessa maneira, 
 sistemas com maior quantidade de elementos interdependentes tendem a exigir maior esforço de compreensão, manutenção e evolução.
 
-De forma complementar, \citeonline{fenton2015} associa a complexidade estrutural à complexidade das conexões entre os elementos de um modelo de sistema. 
+De forma complementar, \citeonline{fenton2015} associam a complexidade estrutural à complexidade das conexões entre os elementos de um modelo de sistema. 
 Para os autores, essa complexidade depende do número de ligações existentes entre os elementos, indicando que sistemas com maior quantidade de relações 
 estruturais tendem a apresentar maior complexidade interna. Assim, a análise da complexidade estrutural permite observar não apenas a quantidade de elementos 
 presentes no sistema, mas também como esses elementos estão conectados.
@@ -430,12 +430,12 @@ chamam uma determinada função ou método. Nesse sentido, valores elevados de \
 centralidade também implica maior atenção, pois alterações nesse elemento podem produzir efeitos em diferentes partes do sistema 
 que dependem dele.
 
-A interpretação do \textit{Fan-In} não deve ser feita apenas de forma negativa. \citeonline{yourdon1978} observa que, em determinados 
+A interpretação do \textit{Fan-In} não deve ser feita apenas de forma negativa. \citeonline{yourdon1978} observam que, em determinados 
 contextos, aumentar o \textit{fan-in} pode ser desejável, pois indica que funcionalidades comuns estão sendo reutilizadas em vez de 
 duplicadas em diferentes partes do sistema. Nesse sentido, o \textit{Fan-In} pode estar associado à modularidade quando representa o 
 reaproveitamento adequado de responsabilidades bem definidas.
 
-Porém, \citeonline{yourdon1978} também ressalta que o aumento do \textit{fan-in} não deve ocorrer a qualquer custo. Agrupar 
+Porém, \citeonline{yourdon1978} também ressaltam que o aumento do \textit{fan-in} não deve ocorrer a qualquer custo. Agrupar 
 funcionalidades não relacionadas em um único módulo apenas para aumentar seu uso pode comprometer a coesão e gerar componentes 
 excessivamente genéricos ou difíceis de manter. Assim, valores elevados de \textit{Fan-In} devem ser analisados em conjunto com 
 outras métricas, especialmente aquelas relacionadas à coesão e ao acoplamento.
@@ -458,7 +458,7 @@ módulo, juntamente com as estruturas de dados que são atualizadas por ele. Ess
 modular mais geral, evidencia a ideia central da métrica: identificar a quantidade de relações de saída estabelecidas por 
 uma unidade do sistema.
 
-De forma semelhante, \citeonline{sommerville2011} define \textit{fan-out} como o número de funções chamadas por uma determinada 
+De modo semelhante, \citeonline{sommerville2011} define \textit{fan-out} como o número de funções chamadas por uma determinada 
 função. Para o autor, valores elevados dessa métrica podem indicar maior complexidade, pois o elemento analisado precisa coordenar 
 um número maior de componentes chamados. Assim, quanto maior o \textit{Fan-Out}, maior pode ser a complexidade da lógica necessária 
 para controlar ou organizar essas interações.
