@@ -13,35 +13,30 @@ A modularidade está diretamente relacionada a conceitos como coesão e acoplame
 tendem a apresentar melhor organização estrutural, facilitando sua compreensão, teste e modificação \cite{yourdon1978}. 
 Em sistemas orientados a objetos, essas características são fortemente influenciadas pelas decisões arquiteturais adotadas, 
 uma vez que a arquitetura define a organização dos componentes e as relações de dependência entre eles \cite{bass2012,sommerville2011}. 
-Dessa forma, a escolha de um estilo arquitetural exerce impacto direto na qualidade estrutural do software.
+Dessa forma, a escolha de um estilo arquitetural pode se refletir na qualidade estrutural do software.
 
 Dentre os estilos arquiteturais amplamente utilizados, destacam-se a arquitetura em camadas e a arquitetura hexagonal. A arquitetura 
 em camadas organiza o sistema em níveis hierárquicos, nos quais cada camada possui responsabilidades específicas, promovendo separação 
-de responsabilidades \cite{fowler2003}. Por outro lado, a arquitetura hexagonal, também conhecida como Ports and Adapters, 
+de responsabilidades \cite{fowler2003}. Por outro lado, a arquitetura hexagonal, também conhecida como \textit{Ports and Adapters}, 
 propõe o isolamento do núcleo da aplicação em relação às dependências externas, favorecendo maior independência tecnológica e 
-testabilidade \cite{cockburn2005}. Embora ambos os estilos sejam discutidos na literatura e utilizados na prática, 
-seus impactos na modularidade nem sempre são avaliados de forma quantitativa.
+testabilidade \cite{cockburn2005}. Ambos os estilos são discutidos na literatura e utilizados na prática, apresentando formas 
+distintas de organizar responsabilidades e dependências no software.
 
 Nesse cenário, métricas de software surgem como instrumentos fundamentais para a avaliação objetiva da qualidade estrutural.
-Métricas como coesão e acoplamento permitem quantificar propriedades internas do código, fornecendo base para análise de diferentes 
+Métricas relacionadas à coesão e ao acoplamento permitem quantificar propriedades internas do código, fornecendo base para análise de diferentes  
 soluções \cite{fenton2015}. Em particular, métricas estruturais para sistemas orientados a objetos, como as propostas por 
 \citeonline{chidamber1994}, são amplamente utilizadas para avaliar atributos internos do software, tais como acoplamento, 
 coesão e complexidade, os quais influenciam diretamente a modularidade e a organização estrutural dos componentes.
 
-Apesar da existência de estudos que utilizam métricas de software para avaliar características estruturais de sistemas, 
-ainda são limitadas as investigações que comparam, de forma quantitativa, a arquitetura em camadas e a arquitetura hexagonal 
-sob a perspectiva da modularidade. Esses dois estilos arquiteturais propõem formas distintas de organizar responsabilidades e 
-dependências no software, mas seus efeitos sobre atributos como acoplamento, coesão e complexidade estrutural nem sempre são 
-analisados a partir de dados extraídos diretamente do código-fonte.
-
-Diante desse contexto, este trabalho propõe avaliar a modularidade de sistemas orientados a objetos por meio da aplicação de métricas 
-estruturais, realizando um estudo comparativo entre arquitetura em camadas e arquitetura hexagonal. A análise será conduzida a partir 
-de dois sistemas previamente desenvolvidos, permitindo observar como os estilos arquiteturais adotados podem se refletir em 
-características estruturais mensuráveis do software.
+Apesar da existência de estudos que avaliam características estruturais de sistemas, os trabalhos relacionados analisados 
+nesta pesquisa indicam que essas discussões têm sido conduzidas a partir de recortes arquiteturais distintos do proposto 
+neste trabalho, como arquitetura dirigida a eventos, \textit{REST}, monólitos e microsserviços \cite{lazzari2022,cintra2025,vale2025}. 
+Assim, este trabalho propõe investigar a modularidade estrutural a partir de um recorte específico: a comparação quantitativa 
+entre arquitetura em camadas e arquitetura hexagonal.
 
 Este trabalho está organizado da seguinte forma: 
 o Capítulo \ref{cap:fundamentacao-teorica} apresenta a fundamentação teórica, abordando conceitos de arquitetura de software, modularidade e métricas estruturais; 
-o Capítulo \ref{cap:trabalhos-relacionados}, discorre sobre alguns trabalhos relacionados; 
+o Capítulo \ref{cap:trabalhos-relacionados} discorre sobre alguns trabalhos relacionados; 
 e, por fim, o Capítulo \ref{cap:metodologia} descreve a metodologia que será adotada no TCC II.  
 
 % o Capítulo \ref{cap:resultados} discute os resultados obtidos; 

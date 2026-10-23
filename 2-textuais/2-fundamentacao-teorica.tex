@@ -111,7 +111,7 @@ implementação em memória, sem alterar as regras internas do sistema \cite{coc
 
 Em implementações orientadas a objetos, as portas podem ser representadas por interfaces de programação que definem os serviços oferecidos 
 ou requeridos pelo núcleo da aplicação. Os adaptadores implementam essas portas e conectam a aplicação a tecnologias específicas, como 
-interfaces gráficas, APIs, mecanismos de persistência ou serviços externos \cite{cockburn2005}. Essa organização favorece a independência 
+interfaces gráficas, \textit{APIs}, mecanismos de persistência ou serviços externos \cite{cockburn2005}. Essa organização favorece a independência 
 tecnológica, pois as regras internas da aplicação permanecem separadas dos detalhes de infraestrutura e integração.
 
 A arquitetura hexagonal diferencia-se da arquitetura em camadas por enfatizar a relação entre o interior e o exterior da aplicação, em vez 
@@ -149,7 +149,7 @@ investigadas por intermédio de métricas estruturais capazes de mensurar propri
 
 Entre os atributos frequentemente associados à avaliação da modularidade e da qualidade estrutural de sistemas orientados a objetos 
 destacam-se o acoplamento, a coesão e a complexidade estrutural \cite{pressman2010,fenton2015}. Assim, esses atributos serão discutidos
-nas subseções seguintes pois permitem analisar diferentes aspectos da organização estrutural do software.
+nas subseções seguintes, pois permitem analisar diferentes aspectos da organização estrutural do software.
 
 \subsection{Acoplamento}
 \label{sec:acoplamento}
@@ -286,7 +286,7 @@ diferentes dimensões do projeto orientado a objetos, incluindo complexidade int
 entre classes, conjunto de respostas possíveis e coesão entre métodos.
 
 Além das métricas da suíte CK, medidas relacionadas ao fluxo de dependências entre componentes também são utilizadas para analisar 
-a estrutura de sistemas de software. Nesse contexto, Fan-In e Fan-Out são discutidas na literatura como medidas associadas, 
+a estrutura de sistemas de software. Nesse contexto, \textit{Fan-In} e \textit{Fan-Out} são discutidas na literatura como medidas associadas, 
 respectivamente, à quantidade de elementos que dependem de um componente e à quantidade de elementos dos quais um componente 
 depende \cite{yourdon1978,sommerville2011}. Essas métricas complementam a análise de acoplamento ao permitir observar a direção 
 e a concentração das dependências no sistema.
@@ -294,7 +294,7 @@ e a concentração das dependências no sistema.
 No contexto desta pesquisa, o interesse recai sobre métricas relacionadas à modularidade e à qualidade estrutural dos sistemas 
 estudados. Por esse motivo, são consideradas métricas associadas principalmente ao acoplamento, à coesão e à complexidade 
 estrutural das classes. As subseções seguintes apresentam as métricas utilizadas no estudo, incluindo CBO, LCOM, RFC, WMC, 
-Fan-In e Fan-Out, discutindo sua relação com os atributos estruturais analisados.
+\textit{Fan-In} e \textit{Fan-Out}, discutindo sua relação com os atributos estruturais analisados.
 
 É importante destacar que algumas métricas orientadas a objetos podem apresentar variações de definição e implementação na 
 literatura e em ferramentas de análise estática. A própria definição da WMC, por exemplo, considera a soma das complexidades 
@@ -477,4 +477,4 @@ compreensão da estrutura interna do sistema.
 Dessa forma, o \textit{Fan-Out} é utilizado como indicador da quantidade de dependências que partem de uma classe. 
 A análise dessa métrica permite observar quais classes dependem de maior número de elementos externos para cumprir suas 
 responsabilidades. Assim, o \textit{Fan-Out} contribui para compreender a distribuição das dependências de saída nos sistemas 
-estudados e complementa a análise realizada por meio das métricas CBO, RFC e Fan-In.
+estudados e complementa a análise realizada por meio das métricas CBO, RFC e \textit{Fan-In}.

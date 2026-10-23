@@ -35,12 +35,12 @@ organização estrutural do software \cite{fowler2003}.
 O segundo sistema analisado é o \textit{Roomie}, desenvolvido na disciplina de Projeto Integrado III. O sistema consiste em uma aplicação
 móvel destinada a conectar pessoas que possuem vagas disponíveis em residências com indivíduos que buscam compartilhar moradia. Entre suas
 funcionalidades estão a publicação de anúncios, mecanismos de filtragem, sistema de compatibilidade entre usuários, troca de mensagens por 
-chat e envio de notificações. Diferentemente do SISO, o Roomie foi estruturado segundo a arquitetura hexagonal, também conhecida como 
+\textit{chat} e envio de notificações. Diferentemente do SISO, o Roomie foi estruturado segundo a arquitetura hexagonal, também conhecida como 
 \textit{Ports and Adapters}. De acordo com \citeonline{cockburn2005}, esse estilo arquitetural busca isolar as regras de negócio dos 
 detalhes tecnológicos por meio de interfaces bem definidas, reduzindo o acoplamento entre domínio e infraestrutura.
 
-Embora os sistemas pertençam a domínios de negócio distintos, ambos foram desenvolvidos utilizando Java e o framework Spring Boot em suas 
-camadas de back-end, adotando princípios de orientação a objetos e práticas semelhantes de desenvolvimento. Dessa forma, a comparação proposta
+Embora os sistemas pertençam a domínios de negócio distintos, ambos foram desenvolvidos utilizando Java e o \textit{framework} Spring Boot em suas 
+camadas de \textit{back-end}, adotando princípios de orientação a objetos e práticas semelhantes de desenvolvimento. Dessa forma, a comparação proposta
 concentra-se na organização estrutural promovida pelos estilos arquiteturais adotados, e não nas funcionalidades implementadas ou no
 desempenho das aplicações.
 
@@ -69,8 +69,8 @@ de diferenças significativas de escala entre os projetos. As quantidades de int
 caracterização geral dos sistemas, enquanto a análise das métricas estruturais será conduzida considerando exclusivamente 
 as classes extraídas pela ferramenta.
 
-Os repositórios contendo os sistemas analisados encontram-se disponíveis para consulta e reprodução dos experimentos realizados neste trabalho, 
-conforme apresentado no Apêndice \ref{apendice:A}.
+Os repositórios dos sistemas analisados encontram-se disponíveis para consulta e reprodução dos experimentos realizados 
+neste trabalho: SISO\footnote{\url{https://github.com/Werley-08/SISO}} e Roomie\footnote{\url{https://github.com/WendelRodriguesz/Roomie_Android}}.
 
 \section{Fluxo Metodológico}
 \label{sec:fluxo-metodologico}
@@ -87,10 +87,17 @@ por meio de análise estática, abordagem na qual as métricas são obtidas dire
 de executar as aplicações \cite{sommerville2011}. Essa estratégia é adequada ao objetivo desta pesquisa, uma vez que o estudo se concentra 
 em atributos internos relacionados à organização estrutural dos sistemas.
 
-Para a extração das métricas será utilizada a ferramenta CK, desenvolvida por Mauricio Aniche. A ferramenta realiza análise estática de 
+Para a extração das métricas será utilizada a ferramenta CK, desenvolvida por Maurício Aniche. A ferramenta realiza análise estática de 
 projetos Java e gera relatórios contendo métricas em nível de classe e de método \cite{aniche-ck}. Nesta pesquisa, serão utilizados 
 exclusivamente os dados extraídos em nível de classe, pois o foco do estudo está na organização estrutural dos sistemas e não na 
-complexidade individual de métodos específicos. O link para a ferramenta CK encontra-se disponível no Apêndice \ref{apendice:A}.
+complexidade individual de métodos específicos. A ferramenta CK\footnote{\url{https://github.com/mauricioaniche/ck}} encontra-se
+disponível para consulta em seu repositório público.
+
+A escolha da ferramenta CK justifica-se por sua compatibilidade com o contexto desta pesquisa e por sua adoção em estudos 
+recentes que utilizam métricas extraídas do código-fonte. \citeonline{Arab2025}, por exemplo, utilizaram a ferramenta CK para 
+extrair métricas estáticas em nível de classe em projetos Java. De forma semelhante, \citeonline{jin2023} empregaram o CK, juntamente 
+ao SonarQube, para extrair métricas de repositórios de software livre. Assim, a ferramenta foi adotada neste trabalho por permitir 
+a extração padronizada das métricas selecionadas nos dois sistemas analisados.
 
 A unidade de análise corresponde aos registros em nível de classe gerados pela ferramenta CK. Esse nível de análise é coerente com o 
 foco da pesquisa em sistemas orientados a objetos, uma vez que parte das métricas selecionadas foi concebida para avaliação de características 
@@ -100,7 +107,7 @@ seja por abordagens quantitativas aplicadas à comparação entre estilos arquit
 
 As métricas utilizadas foram selecionadas com base em sua relação com atributos associados à modularidade e à qualidade estrutural de sistemas 
 orientados a objetos, especialmente acoplamento, coesão e complexidade. Parte dessas métricas deriva da suíte CK, proposta por 
-\citeonline{chidamber1994}, enquanto Fan-In e Fan-Out são incorporadas como métricas complementares para análise das dependências 
+\citeonline{chidamber1994}, enquanto \textit{Fan-In} e \textit{Fan-Out} são incorporadas como métricas complementares para análise das dependências 
 estruturais entre classes \cite{yourdon1978,sommerville2011}.
 
 Embora a suíte CK original seja composta por seis métricas, este trabalho utiliza CBO, LCOM, RFC e WMC, excluindo DIT e NOC. Essa decisão 
@@ -108,15 +115,15 @@ justifica-se pelo fato de DIT e NOC estarem mais diretamente relacionadas à pro
 foco desta pesquisa está na modularidade estrutural, nas dependências entre classes e na separação de responsabilidades promovida pelos 
 estilos arquiteturais analisados, métricas centradas em herança não foram priorizadas.
 
-Para complementar a análise, foram incorporadas as métricas Fan-In e Fan-Out. Essas métricas permitem observar, respectivamente, a quantidade 
+Para complementar a análise, foram incorporadas as métricas \textit{Fan-In} e \textit{Fan-Out}. Essas métricas permitem observar, respectivamente, a quantidade 
 de dependências recebidas por uma classe e a quantidade de dependências realizadas por uma classe \cite{yourdon1978,sommerville2011}. Dessa forma,
 elas contribuem para a análise do acoplamento estrutural ao evidenciar a direção e a concentração das dependências entre os componentes 
-dos sistemas estudados. As métricas selecionadas para a análise são descritas na Tabela \ref{tab:metricas}.
+dos sistemas estudados. As métricas selecionadas para a análise são descritas no Quadro \ref{quad:metricas}.
 
-\begin{table}[htb]
+\begin{quadro}[H]
 \centering
 \caption{Métricas utilizadas na avaliação da modularidade estrutural dos sistemas}
-\label{tab:metricas}
+\label{quad:metricas}
 \begin{tabular}{|p{2cm}|p{10cm}|}
 \hline
 \textbf{Métrica} & \textbf{Descrição} \\ \hline
@@ -140,12 +147,12 @@ WMC &
 Indica a complexidade de uma classe. Na ferramenta CK, é calculado como o número de instruções de ramificação presentes nos 
 métodos da classe \cite{aniche-ck}. \\ \hline
 
-Fan-In &
+\textit{Fan-In} &
 Conta o número de dependências de entrada de uma classe. Na ferramenta CK, corresponde ao número de classes que referenciam 
 a classe analisada, seja por meio de atributos, acesso a atributos, invocação de métodos ou outras formas de referência 
 identificadas por análise estática \cite{aniche-ck}. \\ \hline
 
-Fan-Out &
+\textit{Fan-Out} &
 Conta o número de dependências de saída de uma classe. Na ferramenta CK, corresponde ao número de outras classes referenciadas
 pela classe analisada, seja por meio de atributos, invocações de métodos, instanciação de objetos ou outras formas de 
 referência identificadas por análise estática \cite{aniche-ck}. \\ \hline
@@ -155,9 +162,9 @@ referência identificadas por análise estática \cite{aniche-ck}. \\ \hline
 \vspace{0.1cm}
 \par
 \centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
-\end{table}
+\end{quadro}
 
-Convém observar que as definições apresentadas na Tabela \ref{tab:metricas} apresentam variações em relação às proposições conceituais 
+Convém observar que as definições apresentadas no Quadro \ref{quad:metricas} apresentam variações em relação às proposições conceituais 
 originais de \citeonline{chidamber1994}. Tais distinções decorrem da operacionalização prática adotada pela ferramenta CK, que utiliza 
 heurísticas de análise estática específicas para o ecossistema Java. Por exemplo, enquanto o CBO original é definido de forma ampla como
 o acoplamento entre classes, a ferramenta especifica exatamente quais referências (como variáveis locais e retornos) são contabilizadas e
@@ -174,9 +181,9 @@ práticas das métricas, a análise comparativa será conduzida com base em crit
 \subsection{Processamento Automatizado dos Dados}
 \label{subsec:processamento-dados}
 
-Após a extração das métricas pela ferramenta CK, os relatórios gerados em formato de planilha serão utilizados como entrada para um 
-script desenvolvido em Python. Esse script será responsável por ler os arquivos de saída da ferramenta, selecionar as métricas definidas 
-nesta pesquisa e calcular as medidas estatísticas utilizadas na análise comparativa.
+Após a extração das métricas pela ferramenta CK, os relatórios gerados em formato \textit{CSV} (\textit{Comma-Separated Values}) serão 
+utilizados como entrada para um \textit{script} desenvolvido em Python. Esse \textit{script} será responsável por ler os arquivos de saída da 
+ferramenta, selecionar as métricas definidas nesta pesquisa e calcular as medidas estatísticas utilizadas na análise comparativa.
 
 Para cada sistema e para cada métrica selecionada, serão calculadas medidas de estatística descritiva, incluindo média, mediana, 
 desvio padrão, valor mínimo e valor máximo. Essas medidas serão utilizadas para sumarizar a distribuição dos valores observados em 
@@ -186,12 +193,12 @@ dispersão dos valores em torno da média, e os valores mínimo e máximo permit
 Essa escolha considera que dados de medição de software podem apresentar distribuições não normais, assimétricas e com valores 
 extremos, exigindo cautela na interpretação das medidas estatísticas \cite{fenton2015}.
 
-Além do cálculo das medidas descritivas, o script também será responsável pela geração de visualizações gráficas que auxiliem a 
+Além do cálculo das medidas descritivas, o \textit{script} também será responsável pela geração de visualizações gráficas que auxiliem a 
 comparação entre os sistemas. Essas visualizações terão como objetivo representar a distribuição dos valores das métricas e facilitar 
 a identificação de diferenças, concentrações e possíveis valores extremos.
 
-A utilização de um script para leitura, processamento e visualização dos dados busca reduzir intervenções manuais sobre as planilhas 
-geradas pela ferramenta CK, diminuindo a possibilidade de erros de manipulação e favorecendo a reprodutibilidade dos procedimentos 
+A utilização de um \textit{script} para leitura, processamento e visualização dos dados busca reduzir intervenções manuais sobre os dados 
+gerados pela ferramenta CK, diminuindo a possibilidade de erros de manipulação e favorecendo a reprodutibilidade dos procedimentos 
 adotados. Não serão aplicados testes estatísticos inferenciais, pois o objetivo desta pesquisa é descrever e comparar os indicadores 
 estruturais observados nos dois sistemas analisados.
 
@@ -200,15 +207,15 @@ estruturais observados nos dois sistemas analisados.
 
 A etapa final consiste na análise comparativa e na interpretação dos valores obtidos para os sistemas SISO e Roomie. 
 A comparação será realizada métrica por métrica, considerando as medidas descritivas calculadas e as visualizações 
-gráficas geradas pelo script em Python.
+gráficas geradas pelo \textit{script} em Python.
 
 A análise buscará identificar semelhanças e diferenças nos indicadores estruturais associados à modularidade, 
 observando a concentração dos dados, a variação entre as classes e a ocorrência de possíveis valores extremos. 
-As métricas CBO, Fan-In e Fan-Out serão consideradas na análise das dependências entre classes; a métrica LCOM* 
+As métricas CBO, \textit{Fan-In} e \textit{Fan-Out} serão consideradas na análise das dependências entre classes; a métrica LCOM* 
 será utilizada como indicador relacionado à coesão interna; e as métricas RFC e WMC serão consideradas na análise 
 da complexidade estrutural e do potencial de interação das classes.
 
-Os resultados serão interpretados à luz dos conceitos discutidos na fundamentação teórica, especialmente modularidade, 
+Os resultados serão interpretados com base nos conceitos discutidos na fundamentação teórica, especialmente modularidade, 
 acoplamento, coesão e complexidade. Nesse sentido, será observado como a arquitetura em camadas adotada no SISO e a arquitetura 
 hexagonal adotada no Roomie se refletem nos indicadores estruturais extraídos.
 
@@ -224,9 +231,9 @@ de sistemas orientados a objetos.
 \section{Cronograma de Execução}
 \label{sec:cronograma-execucao}
 
-Essa seção apresenta o cronograma de execução das atividades previstas para a realização do TCC II, conforme descrito na Tabela \ref{tab:cronograma}.
+Esta seção apresenta o cronograma de execução das atividades previstas para a realização do TCC II, conforme descrito na Tabela \ref{tab:cronograma}.
 
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \caption{Cronograma de execução do TCC II}
 \label{tab:cronograma}
@@ -239,7 +246,7 @@ Revisão e ajustes do TCC I & X & & & & \\ \hline
 
 Extração das métricas com a ferramenta CK & & X & & & \\ \hline
 
-Desenvolvimento do script de análise & & X & X & & \\ \hline
+Desenvolvimento do \textit{script} de análise & & X & X & & \\ \hline
 
 Processamento dos dados & & & X & & \\ \hline
 

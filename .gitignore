@@ -9,6 +9,7 @@
 *.ind
 *.lof
 *.lot
+*.loq
 *.out
 *.toc
 *.acn

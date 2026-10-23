@@ -1,18 +1,25 @@
 \chapter{Trabalhos Relacionados}
 \label{cap:trabalhos-relacionados}
 
-Este capítulo apresenta trabalhos que se relacionam com a avaliação estrutural de sistemas de software e com a comparação 
-entre estilos arquiteturais. Foram considerados estudos que abordam métricas de software, modularidade, acoplamento, coesão, 
-qualidade arquitetural e efeitos de decisões arquiteturais sobre atributos internos do sistema.
+Este capítulo apresenta trabalhos relacionados à avaliação estrutural de sistemas de software e à comparação entre estilos arquiteturais. 
+O levantamento considerou estudos que abordam métricas de software, modularidade, acoplamento, coesão, qualidade arquitetural e efeitos 
+de decisões arquiteturais sobre atributos internos do sistema.
 
-Os trabalhos analisados não possuem o mesmo recorte desta pesquisa, mas contribuem para situar a questão investigada. Alguns 
-deles utilizam métricas estruturais para avaliar sistemas orientados a objetos, enquanto outros comparam arquiteturas ou discutem 
-critérios para escolha arquitetural. Em conjunto, esses estudos permitem observar diferentes formas de relacionar arquitetura, 
-modularidade e qualidade estrutural.
+Os trabalhos foram identificados por meio de buscas no Google Acadêmico, no Portal de Periódicos da CAPES e na base IEEE Xplore, além da 
+consulta a repositórios institucionais de trabalhos acadêmicos. Foram utilizadas combinações de termos em português e em inglês, como 
+``métricas de software'' e ``\textit{software metrics}'', ``modularidade'' e ``\textit{modularity}'', ``arquitetura de software'' e ``\textit{software architecture}'', 
+``arquitetura em camadas'' e ``\textit{layered architecture}'', ``arquitetura hexagonal'' e ``\textit{hexagonal architecture}'', além de ``sistemas orientados 
+a objetos'' e ``\textit{object-oriented systems}''.
 
-A apresentação dos trabalhos busca destacar, em cada caso, o objetivo do estudo, a abordagem adotada e sua relação com esta 
-pesquisa. Ao final do capítulo, é apresentada uma síntese comparativa, evidenciando o recorte específico deste TCC: a análise 
-quantitativa de métricas estruturais em nível de classe para comparar uma arquitetura em camadas e uma arquitetura hexagonal.
+A seleção incluiu artigos científicos, dissertações e trabalhos de conclusão de curso. Essa decisão decorre da especificidade do recorte 
+desta pesquisa, uma vez que, durante o levantamento realizado, não foram identificados, nas bases consultadas, artigos com o mesmo recorte 
+comparativo entre arquitetura em camadas e arquitetura hexagonal sob a perspectiva da modularidade estrutural. Assim, foram selecionados 
+também trabalhos acadêmicos com proximidade temática ou metodológica, especialmente aqueles relacionados à avaliação estrutural de software, 
+comparação entre arquiteturas, uso de métricas ou análise de atributos associados à modularidade.
+
+Os trabalhos analisados não possuem o mesmo recorte desta pesquisa, mas contribuem para situar a questão investigada. Alguns utilizam 
+métricas estruturais para avaliar sistemas orientados a objetos, enquanto outros comparam arquiteturas ou discutem critérios para escolha 
+arquitetural. Em conjunto, esses estudos permitem observar diferentes formas de relacionar arquitetura, modularidade e qualidade estrutural.
 
 \section{Avaliação de Conectividade em Sistemas Orientados por Objetos}
 \label{sec:avaliacao-de-conectividade-em-sistemas-orientados-por-objetos}
@@ -24,11 +31,11 @@ mais flexíveis, com menor interdependência entre suas partes, facilitam esse p
 
 Segundo a autora, a orientação por objetos, embora favoreça a modularidade, não garante por si só uma estrutura de alta qualidade se não 
 houver um controle rigoroso sobre as conexões entre classes. O estudo defende que o impacto de uma alteração no sistema é diretamente 
-proporcional ao seu grau de conectividade, e que o ``apodrecimento'' do design de software ocorre quando a rigidez estrutural impede 
+proporcional ao seu grau de conectividade, e que o ``apodrecimento'' do \textit{design} de software ocorre quando a rigidez estrutural impede 
 modificações sem gerar efeitos colaterais em cascata.
 
 Para operacionalizar a avaliação, o trabalho identifica e classifica métricas estruturais clássicas, com destaque para o conjunto 
-CK (Chidamber e Kemerer) e o conjunto MOOD (Metrics for Object Oriented Design), selecionando indicadores como CBO 
+CK (Chidamber e Kemerer) e o conjunto MOOD (\textit{Metrics for Object Oriented Design}), selecionando indicadores como CBO 
 (\textit{Coupling Between Object Classes}), LCOM (\textit{Lack of Cohesion in Methods}) e COF (\textit{Coupling Factor}). 
 Além disso, a pesquisa contribuiu com o desenvolvimento da ferramenta \textit{Connecta}, capaz de extrair essas métricas de sistemas 
 desenvolvidos em Java e aplicar uma adaptação do modelo de estabilidade de Myers para prever o esforço de manutenção.
@@ -44,8 +51,8 @@ em indicadores de acoplamento, coesão e complexidade estrutural.
 \label{sec:os-efeitos-da-arquitetura-dirigida-a-eventos-na-modularidade-de-software}
 
 O trabalho de \citeonline{lazzari2022} apresenta um estudo que busca compreender os efeitos da arquitetura dirigida 
-a eventos na modularização de software em comparação ao estilo arquitetural REST. A pesquisa fundamenta-se na análise de duas versões 
-funcionalmente idênticas de uma aplicação real, evoluídas através de cinco cenários de mudança nos quais novas funcionalidades foram 
+a eventos na modularização de software em comparação ao estilo arquitetural \textit{REST}. A pesquisa fundamenta-se na análise de duas versões 
+funcionalmente idênticas de uma aplicação real, evoluídas por meio de cinco cenários de mudança nos quais novas funcionalidades foram 
 adicionadas. O estudo utiliza um conjunto de dez métricas estruturais para quantificar variáveis críticas da modularidade, 
 incluindo separação de interesses (SoC), acoplamento, coesão, complexidade e tamanho.
 
@@ -53,21 +60,21 @@ Segundo os resultados reportados pelos autores, a arquitetura dirigida a eventos
 superioridade na separação de interesses, apresentando melhores índices de modularização funcional tanto em nível de componentes 
 quanto de linhas de código. Esse achado sugere que o modelo de eventos favorece a independência dos serviços, facilitando a evolução
 do sistema sem a degradação da qualidade funcional. Por outro lado, a pesquisa revelou que essa flexibilidade introduz uma ``penalidade'' 
-estrutural: a arquitetura dirigida a eventos apresentou maior acoplamento e complexidade se comparada ao REST, além de um aumento 
+estrutural: a arquitetura dirigida a eventos apresentou maior acoplamento e complexidade se comparada ao \textit{REST}, além de um aumento 
 significativo no tamanho do código devido às necessidades de configuração de infraestrutura e classes auxiliares.
 
 No estudo de \citeonline{lazzari2022}, a comparação arquitetural é conduzida a partir da evolução de uma aplicação e 
-do contraste entre REST e arquitetura dirigida a eventos. Esse trabalho é relevante para esta pesquisa por evidenciar 
+do contraste entre \textit{REST} e arquitetura dirigida a eventos. Esse trabalho é relevante para esta pesquisa por evidenciar 
 que decisões arquiteturais podem produzir efeitos distintos sobre atributos de modularidade. Aqui, porém, o interesse 
 não recai sobre o mecanismo de comunicação entre serviços, mas sobre a organização interna de sistemas orientados a 
 objetos, analisada por meio de métricas em nível de classe.
 
-\section{Comparação entre as arquiteturas de software monolítica e de microsserviços }
+\section{Comparação entre as arquiteturas de software monolítica e de microsserviços}
 \label{sec:comparacao-entre-as-arquiteturas-de-software-monolitica-e-de-microsservicos}
 
 O trabalho de \citeonline{vale2025} investiga o debate entre as arquiteturas monolítica e de microsserviços, focando na transição da 
-análise teórica para a validação empírica. O estudo busca mensurar os trade-offs de cada abordagem em um ambiente controlado. 
-A metodologia consistiu na implementação de dois protótipos funcionalmente idênticos de um sistema de e-commerce (CRUD), 
+análise teórica para a validação empírica. O estudo busca mensurar os \textit{trade-offs} de cada abordagem em um ambiente controlado. 
+A metodologia consistiu na implementação de dois protótipos funcionalmente idênticos de um sistema de \textit{e-commerce} (\textit{CRUD}), 
 desenvolvidos com o ecossistema Node.js e containerizados com Docker, com o objetivo de reduzir interferências externas na 
 comparação entre as abordagens arquiteturais.
 
@@ -83,7 +90,7 @@ que foi três vezes maior do que o exigido para o monólito. O autor conclui que
 de escalabilidade, para sistemas de baixa complexidade ou em fases iniciais, a arquitetura monolítica é fortemente suportada pela eficiência
 de recursos e velocidade de entrega.
 
-O trabalho de \citeonline{vale2025} contribui para o debate sobre trade-offs arquiteturais ao analisar desempenho, consumo 
+O trabalho de \citeonline{vale2025} contribui para o debate sobre \textit{trade-offs} arquiteturais ao analisar desempenho, consumo 
 de recursos e complexidade de implantação em protótipos funcionalmente equivalentes. Esse recorte difere do adotado nesta pesquisa, 
 que não avalia eficiência de execução nem custo operacional, mas características estruturais do código-fonte. Assim, a comparação 
 realizada neste TCC concentra-se nos indicadores de acoplamento, coesão e complexidade das classes em uma arquitetura em camadas e 
@@ -122,7 +129,7 @@ produto, analisando quatro abordagens distintas para sua especificação: cláss
 a busca. A pesquisa fundamenta-se na premissa de que a qualidade não reside apenas na ausência de defeitos funcionais, mas na capacidade do 
 sistema de satisfazer requisitos não-funcionais críticos, como a manutenibilidade e a capacidade de modificação.
 
-O autor destaca que o design arquitetural deve ser guiado pelos atributos de qualidade mais importantes para o sucesso do projeto. 
+O autor destaca que o \textit{design} arquitetural deve ser guiado pelos atributos de qualidade mais importantes para o sucesso do projeto. 
 Para viabilizar essa análise, o estudo utiliza a métrica de arquitetura denominada Qualidade de Modularização (TurboMQ), que quantifica
 a interdependência entre componentes ao calcular a razão entre relacionamentos internos e externos em um gráfico de dependência de módulos 
 (MDG). Um dos diferenciais da pesquisa é a aplicação da Engenharia de Software Baseada em Busca (SBSE), utilizando Algoritmos Genéticos para 
@@ -139,14 +146,14 @@ do código-fonte.
 \label{sec:sintese-e-lacunas}
 
 Após a análise individual dos trabalhos, esta seção apresenta uma visão consolidada das pesquisas selecionadas. 
-A Tabela \ref{tab:sintese-trabalhos-relacionados} sistematiza os recortes dos estudos, as arquiteturas ou abordagens 
+O Quadro \ref{quad:sintese-trabalhos-relacionados} sistematiza os recortes dos estudos, as arquiteturas ou abordagens 
 analisadas, as métricas ou atributos considerados e a relação de cada trabalho com esta pesquisa.
 
 \begin{landscape}
-\begin{table}[htb]
+\begin{quadro}[htb]
 \centering
 \caption{Síntese dos trabalhos relacionados}
-\label{tab:sintese-trabalhos-relacionados}
+\label{quad:sintese-trabalhos-relacionados}
 \small
 \begin{tabularx}{\linewidth}{|p{2.5cm}|X|X|X|X|}
 \hline
@@ -170,7 +177,7 @@ Relaciona arquitetura e qualidade, mas com foco em otimização arquitetural. \\
 
 Lazzari (2021) &
 Efeitos arquiteturais sobre modularização em cenários de evolução. &
-Arquitetura dirigida a eventos e REST. &
+Arquitetura dirigida a eventos e \textit{REST}. &
 Separação de interesses, acoplamento, coesão, complexidade e tamanho. &
 Compara arquiteturas com métricas, mas analisa comunicação entre serviços. \\ \hline
 
@@ -189,28 +196,28 @@ Compara arquiteturas quantitativamente, mas com foco em desempenho e infraestrut
 \textbf{Este trabalho} &
 \textbf{Avaliação estrutural da modularidade em sistemas orientados a objetos.} &
 \textbf{Arquitetura em camadas e arquitetura hexagonal.} &
-\textbf{CBO, LCOM*, RFC, WMC, Fan-In e Fan-Out.} &
-\textbf{Compara sistemas reais por meio de métricas estruturais em nível de classe.} \\ \hline
+\textbf{CBO, LCOM*, RFC, WMC, \textit{Fan-In} e \textit{Fan-Out}.} &
+\textbf{Compara sistemas por meio de métricas estruturais em nível de classe.} \\ \hline
 
 \end{tabularx}
 
 \vspace{0.1cm}
 \par
 \centering{\footnotesize Fonte: Elaborado pelo autor (2026).}
-\end{table}
+\end{quadro}
 \end{landscape}
 
 A análise dos trabalhos relacionados mostra que métricas estruturais e comparações arquiteturais têm sido utilizadas 
 sob diferentes perspectivas para investigar atributos de qualidade de software. Alguns estudos concentram-se na conectividade 
-e na modularidade interna de sistemas orientados a objetos, enquanto outros analisam trade-offs entre arquiteturas distribuídas, 
+e na modularidade interna de sistemas orientados a objetos, enquanto outros analisam \textit{trade-offs} entre arquiteturas distribuídas, 
 estilos de comunicação ou modelos de organização arquitetural. Também se observa diferença quanto ao tipo de evidência utilizada: 
 há trabalhos baseados em revisão bibliográfica, estudos com protótipos controlados e pesquisas que aplicam métricas diretamente 
 em sistemas implementados.
 
 Considerando os trabalhos analisados, percebe-se que a comparação quantitativa entre arquitetura em camadas e arquitetura 
 hexagonal ainda é pouco explorada, especialmente quando o foco recai sobre métricas estruturais em nível de classe. As 
-pesquisas mais próximas abordam conectividade, modularidade ou trade-offs arquiteturais, mas geralmente se concentram 
-em outros recortes, como monólitos e microsserviços, REST e arquitetura dirigida a eventos, modelos de otimização arquitetural 
+pesquisas mais próximas abordam conectividade, modularidade ou \textit{trade-offs} arquiteturais, mas geralmente se concentram 
+em outros recortes, como monólitos e microsserviços, \textit{REST} e arquitetura dirigida a eventos, modelos de otimização arquitetural 
 ou guias conceituais de apoio à decisão.
 
 Nesse contexto, este TCC contribui com uma análise empírica descritiva de dois sistemas orientados a objetos desenvolvidos 
